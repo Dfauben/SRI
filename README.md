@@ -3,12 +3,12 @@ Este repositorio incluye actividades llevadas a cabo en el modulo Servicios de R
 
 ## Indice
 
-- [Tema 0 - Introducción ](#Tema-0--Introducción)
-- [Tema 1 - Servidores Web ](#Tema-1--Servidores-Web)
+- [Tema 0 - Introducción ](#Tema-0-Introducción)
+- [Tema 1 - Servidores Web ](#Tema-1-Servidores-Web)
 - [Tema 2 - Placeholder ](#Tema-X--Placeholder)
 - [Tema 3 - Placeholder ](#Tema-0--Introducción)
 
-## Tema 0  Introducción
+## Tema 0 Introducción
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
