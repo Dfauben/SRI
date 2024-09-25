@@ -10,10 +10,11 @@ Este repositorio incluye actividades llevadas a cabo en el modulo Servicios de R
 
 ## Tema 0  Introducción
 
+
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
-| 1 | Introducción a HTTP |
-| 2 | Comparación entre los protocolos TCP y UDP |
-| 3 | Conexiones con Telnet |
-| 4 | cURL |
-| 5 | Servidores Web |
+| 1 | Introducción a HTTP, que comprende cuestiones básicas para el entendimiento de la asignatura. | 
+| 2 | Cuestiones con las que se pretende dar a entender la comparación que existe entre los protocolos TCP y UDP. |
+| 3 | Ejercicio práctico probando conexiones con el cliente Telnet. |
+| 4 | Uso del comando cURL. |
+| 5 | Práctica donde se prueban diferentes formas de crear servidores web. |
