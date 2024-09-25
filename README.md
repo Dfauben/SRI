@@ -1,6 +1,8 @@
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
 
+![logos](https://educacionadistancia.juntadeandalucia.es/centros/huelva/pluginfile.php/95731/mod_label/intro/s_6logos_juntos.png)
+
 ## Indice
 
 - [Tema 0 - Introducción ](#Tema-0-Introducción)
