@@ -1,39 +1,7 @@
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
 
-
-<div style="display: flex;">
-  <div style="
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            height:80px;
-            width: 33.3333333333%;
-            margin: 5px;">
-        <img src=".\Logos\JA.png"/>
-    </div>
-    <div style="
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            height:80px;
-            width: 33.3333333333%;
-            margin: 5px;">
-        <img src=".\Logos\GE.png"/>
-    </div>
-    <div style="
-            display: inline-block;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            height:80px;
-            width: 33.3333333333%;
-            margin: 5px;">
-        <img src=".\Logos\UE.png"/>
-    </div>
-</div>
+<img src=".\Logos\all.png" alt="logos" width="600"/>
 
 ## Indice
 
