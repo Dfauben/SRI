@@ -1,7 +1,7 @@
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
 
-<!--- ![logos](https://upload.wikimedia.org/wikipedia/commons/8/8a/Logotipo_del_Ministerio_de_Educaci%C3%B3n_y_Formaci%C3%B3n_Profesional.svg) --->
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Logotipo_del_Ministerio_de_Educaci%C3%B3n_y_Formaci%C3%B3n_Profesional.svg" alt="drawing" width="200"/>
 
 ## Indice
 
