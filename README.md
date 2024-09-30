@@ -1,7 +1,43 @@
+<style>
+    .div-1 {
+    background-image: url('JA.png');
+
+
+}
+    
+.div-2 {
+    background: url('GE.png');
+}
+    
+.div-3 {
+    background: url('UE.png');
+}
+        
+.div-1,
+.div-2,
+.div-3 {
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height:80px;
+    width: 33.3333333333%;
+    margin: 5px;
+}
+.parent-container {
+    display: flex;
+}
+</style>
+
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Logotipo_del_Ministerio_de_Educaci%C3%B3n_y_Formaci%C3%B3n_Profesional.svg" alt="drawing" width="200"/>
+
+<div class="parent-container">
+  <div class="div-1"></div>
+  <div class="div-2"></div>
+  <div class="div-3"></div>
+</div>
 
 ## Indice
 
