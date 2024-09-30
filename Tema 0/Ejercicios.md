@@ -40,7 +40,7 @@
 - Las páginas dinámicas se generan en el momento a través de scripts del servidor, un ejemplo es la página de búsqueda de Google. Mientras que una estática es una página que siempre permanece igual independiente de los parámetros que se le lancen.
 
 **¿Cómo usar telnet para acceder a un servidor web?**
-- de
+- Activamos el cliente Telnet en caso de que no lo tengamos activado
 
 **Request. Métodos principales**
 - GET y POST
@@ -54,3 +54,38 @@
 
 **Content type. Tipos principales**
 - Texto / HTML
+
+## Ejercicio 2 - UDP and TCP. Comparison of Transport Protocol :
+
+**Diferencias entre UDP y TCP**
+- TCP es más lento pero asegura que la información llegue completa y en el orden correcto, mientras que UDP es más rápido porque no asegura la transmisión completa de los datos así como del orden de llegada de estos.
+
+**¿Qué aplicaciones usan TCP?**
+- HTTP, FTP, SMTP, Telnet entre otras.
+
+
+**¿Qué aplicaciones usan UDP?**
+- DNS, TFTP (Trivial Files Transmission Protocol), NFS (NetWork File System), NCS (NetWork-Based Call Signaling).
+
+**¿Qué capa almacena el puerto?**
+- La capa número 4, la capa de Transporte.
+
+**¿Qué capa almacena la IP?**
+
+- La capa número 3, la capa de Red.
+
+**¿Qué es Three-way Handshake?**
+
+- Proceso en el que se establece una conexión segura entre dos dispositivos/máquinas a través de una red de conexión TCP/IP confirmando que ambas partes se encuentras listas para la comunicación.
+
+## Ejercicio 3 - Práctica Telnet/HTTP :
+
+**p**
+
+## Ejercicio 4 - Usando cURL :
+
+**p**
+
+## Ejercicio 5 - Práctica a Servidor Web :
+
+**p**
