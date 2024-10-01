@@ -2,13 +2,13 @@
 
 ## Indice
 
-- [Inicio ](#Tema-0-Introducción)
-- [Tema 0 - Introducción ](#Tema-0-Introducción)
-    - [Ejercicio 1 - Introducción ](#Tema-0-Introducción)
-    - [Ejercicio 2 - Comparativa entre UDP y TCP](#Tema-0-Introducción)
-    - [Ejercicio 3 - Práctica de Telnet/HTTP](#Tema-0-Introducción)
-    - [Ejercicio 4 - Usando cURL](#Tema-0-Introducción)
-    - [Ejercicio 5 - Práctica a Servidor Web](#Tema-0-Introducción)
+- [Inicio ](../README.md)
+- [Tema 0 - Introducción ](#indice)
+    - [Ejercicio 1 - Introducción ](#ejercicio-1---introducción-)
+    - [Ejercicio 2 - Comparativa entre UDP y TCP](#ejercicio-2---udp-and-tcp-comparison-of-transport-protocol-)
+    - [Ejercicio 3 - Práctica de Telnet/HTTP](#ejercicio-3---práctica-telnethttp-)
+    - [Ejercicio 4 - Usando cURL](#ejercicio-4---usando-curl-)
+    - [Ejercicio 5 - Práctica a Servidor Web](#ejercicio-5---práctica-a-servidor-web-)
 - [Tema 1 - Servidores Web ](#Tema-1-Servidores-Web)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
@@ -40,7 +40,24 @@
 - Las páginas dinámicas se generan en el momento a través de scripts del servidor, un ejemplo es la página de búsqueda de Google. Mientras que una estática es una página que siempre permanece igual independiente de los parámetros que se le lancen.
 
 **¿Cómo usar telnet para acceder a un servidor web?**
-- Activamos el cliente Telnet en caso de que no lo tengamos activado
+- Activamos el cliente Telnet en caso de que no lo tengamos activado. Para ello accedemos a ***"Activar o desactivar las características de Windows"*** y buscamos la opción de **cliente de Telnet**.
+
+<br>
+
+<img src="./rsc/images/Telnetallw.png" alt="logos" width="340"/>
+
+</br>
+
+- Con Telnet ya activado, abrimos la línea de comandos y ejecutamos el comando de **Telnet** para comunicarnos con un servidor web, lo hacemos con el siguiente comando
+
+``
+telnet Nombre_Dominio Puerto
+``
+
+Podemos acompañar con la ejecución del comando, una petición a través de ***GET***, lo que nos daría información relativa a la comunicación que hemos establecido. En la siguiente información vemos un ejemplo.
+
+<img src="./rsc/images/Telnet out.png" alt="logos" width="540"/>
+
 
 **Request. Métodos principales**
 - GET y POST
@@ -84,7 +101,16 @@
 
 ## Ejercicio 4 - Usando cURL :
 
-**p**
+El comando cURL abreviatura de ***Client URL*** nos permite conectarnos a una URL y demostrar así la conectividad que mantenemos con esta URL. Además este comando nos permite una serie de opciones:
+
+- **-O**
+- **-O**
+- **-O**
+- **-O**
+
+``
+cURL 'Nombre del dominio' > Nombre_archivo.html
+``
 
 ## Ejercicio 5 - Práctica a Servidor Web :
 

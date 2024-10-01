@@ -1,11 +1,13 @@
+<img src=".\Logos\all.png" alt="logos" width="600"/>
+
+<br>
+
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
 
-<img src=".\Logos\all.png" alt="logos" width="600"/>
-
 ## Indice
 
-- [Tema 0 - Introducción ](#Tema-0-Introducción)
+- [Tema 0 - Introducción ](./Tema%200/Ejercicios.md)
 - [Tema 1 - Servidores Web ](#Tema-1-Servidores-Web)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
