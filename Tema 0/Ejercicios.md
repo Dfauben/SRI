@@ -184,7 +184,7 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 
 <br>
 
-###¿Qué capa almacena la IP?
+### ¿Qué capa almacena la IP?
 
 - La capa número 3, la capa de Red.
 
@@ -208,18 +208,41 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 
 El comando cURL abreviatura de ***Client URL*** nos permite conectarnos a una URL y demostrar así la conectividad que mantenemos con esta URL. Además este comando nos permite una serie de opciones:
 
-- **-O**
-- **-O**
-- **-O**
-- **-O**
+- **-O** : Descarga el archivo y lo guarda con el mismo nombre que la URL.
+- **-k** : Permite la conexión a webs SSL sin certificado (Peligroso).
+- **-s** : Reduce la cantidad información mostrada de la conexión.
+- **-u** : Permite introducir credenciales.
+
+**Si añadimos al final del comando ">" con un nombre que queramos y una extensión correcta podemos guardar más personalizado**
 
 ``
 cURL 'Nombre del dominio' > Nombre_archivo.html
 ``
+
+<img src="./rsc/images/cURL.png" alt="logos" width="480"/>
 
 <br>
 <br>
 
 ## Ejercicio 5 - Práctica a Servidor Web :
 
-### p
+Existen varias formas de crear un hosting improvisado para nuestro servidor, veamos como hacerlo junto a **Python**
+
+### Método 1 - Simple web server
+
+1. Con **Python** instalado es tan sencillo como ejecutar en una consola el siguiente comando
+
+``python -m http.server 8000
+`` 
+
+<img src="./rsc/images/serverhost.png" alt="pthnsrv" width="480"/>
+
+<br>
+
+2. Ahora si accedemos desde nuestro navegador web a *'localhost'*, podemos observar que funciona correctamente
+
+<br>
+
+**Nota: En caso de que no tengamos preparado un documento html, aparecerá el sistema de archivos de la máquina, algo que puede llegar a ser bastante peligroso**.
+
+### 
