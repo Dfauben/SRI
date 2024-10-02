@@ -17,19 +17,20 @@
 
 ## Ejercicio 1 - Introducción :
 
-**¿Quién, dónde y cuándo se crea el primer servidor web?**
+<br>
+
+### ¿Quién, dónde y cuándo se crea el primer servidor web?
 - Tim Berners-Lee junto a Robert Cailliau fueron los creadores del primer servidor web, se creó entre 1989 y 1990 en el CERN (Conseil Européen pour la Recherche Nucléaire o Organización Europea para la Investigación Nuclear).
 
-<br>
 <br>
 
 ### ¿Qué es pila de protocolos usados por http?
 - TCP/IP
 
 <br>
-<br>
 
-**¿Componentes de una URL?**
+
+### ¿Componentes de una URL?
 
 <br>
 
