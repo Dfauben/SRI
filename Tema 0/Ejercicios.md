@@ -20,15 +20,11 @@
 <br>
 
 ### ¿Quién, dónde y cuándo se crea el primer servidor web?
-<br>
-
 - Tim Berners-Lee junto a Robert Cailliau fueron los creadores del primer servidor web, se creó entre 1989 y 1990 en el CERN (Conseil Européen pour la Recherche Nucléaire o Organización Europea para la Investigación Nuclear).
 
 <br>
 
 ### ¿Qué es pila de protocolos usados por http?
-
-<br>
 
 - TCP/IP
 
@@ -113,30 +109,41 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 
 ## Ejercicio 2 - UDP and TCP. Comparison of Transport Protocol :
 
-**Diferencias entre UDP y TCP**
+### Diferencias entre UDP y TCP
 - TCP es más lento pero asegura que la información llegue completa y en el orden correcto, mientras que UDP es más rápido porque no asegura la transmisión completa de los datos así como del orden de llegada de estos.
 
-**¿Qué aplicaciones usan TCP?**
+<br>
+
+### ¿Qué aplicaciones usan TCP?
 - HTTP, FTP, SMTP, Telnet entre otras.
 
+<br>
 
-**¿Qué aplicaciones usan UDP?**
+### ¿Qué aplicaciones usan UDP?
 - DNS, TFTP (Trivial Files Transmission Protocol), NFS (NetWork File System), NCS (NetWork-Based Call Signaling).
 
-**¿Qué capa almacena el puerto?**
+<br>
+
+### ¿Qué capa almacena el puerto?
 - La capa número 4, la capa de Transporte.
 
-**¿Qué capa almacena la IP?**
+<br>
+
+###¿Qué capa almacena la IP?
 
 - La capa número 3, la capa de Red.
 
-**¿Qué es Three-way Handshake?**
+<br>
+
+### ¿Qué es Three-way Handshake?
 
 - Proceso en el que se establece una conexión segura entre dos dispositivos/máquinas a través de una red de conexión TCP/IP confirmando que ambas partes se encuentras listas para la comunicación.
 
+<br>
+
 ## Ejercicio 3 - Práctica Telnet/HTTP :
 
-**p**
+### p
 
 ## Ejercicio 4 - Usando cURL :
 
@@ -153,4 +160,4 @@ cURL 'Nombre del dominio' > Nombre_archivo.html
 
 ## Ejercicio 5 - Práctica a Servidor Web :
 
-**p**
+### p
