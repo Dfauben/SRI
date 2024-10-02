@@ -20,16 +20,20 @@
 **¿Quién, dónde y cuándo se crea el primer servidor web?**
 - Tim Berners-Lee junto a Robert Cailliau fueron los creadores del primer servidor web, se creó entre 1989 y 1990 en el CERN (Conseil Européen pour la Recherche Nucléaire o Organización Europea para la Investigación Nuclear).
 
+<br>
+<br>
 
 **¿Qué es pila de protocolos usados por http?**
 - TCP/IP
 
+<br>
+<br>
 
 **¿Componentes de una URL?**
 
 <br>
 
-<img src="./rsc/images/URL.png" alt="urlimage" width="340"/>
+<img src="./rsc/images/URL.png" alt="urlimage" width="470"/>
 
 <br>
 
@@ -40,13 +44,20 @@
 5. La Query String dónde quedan registrados diferentes parámetros útiles para el trabajo con la base de datos. Suele ser opcional.
 6. También veremos ID’s relacionadas con localizaciones dentro de un mismo archivo (por ejemplo en el caso del contenido relacionado de un índice en un manual de instrucciones.) También es un componente opcional por su naturaleza.
 
+<br>
+<br>
 
 **¿Pasos en la recuperación de una página web mediante HTTP?**
 - Se lanza una consulta desde el lado del cliente, la consulta consiste en un datagrama compuesto por un método(comando) una URI y la versión HTTP utilizada. Se recibe la consulta y el servidor la analiza y responde bien con un mensaje dónde se da a conocer el proceso funcionó junto con el archivo solicitado o bien un mensaje de error.
 
+<br>
+<br>
 
 **Diferencia entre páginas dinámicas y estáticas**
 - Las páginas dinámicas se generan en el momento a través de scripts del servidor, un ejemplo es la página de búsqueda de Google. Mientras que una estática es una página que siempre permanece igual independiente de los parámetros que se le lancen.
+
+<br>
+<br>
 
 **¿Cómo usar telnet para acceder a un servidor web?**
 - Activamos el cliente Telnet en caso de que no lo tengamos activado. Para ello accedemos a ***"Activar o desactivar las características de Windows"*** y buscamos la opción de **cliente de Telnet**.
@@ -67,11 +78,13 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 <img src="./rsc/images/Telnet out.png" alt="logos" width="540"/>
 
 <br>
+<br>
 
 
 **Request. Métodos principales**
 - GET y POST
 
+<br>
 <br>
 
 **Response. Códigos**
@@ -85,9 +98,13 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 | 500-599 | Erro del servidor |
 
 <br>
+<br>
 
 **Content type. Tipos principales**
 - Texto / HTML
+
+<br>
+<br>
 
 ## Ejercicio 2 - UDP and TCP. Comparison of Transport Protocol :
 
