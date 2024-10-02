@@ -13,6 +13,8 @@
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 
+<br>
+
 ## Ejercicio 1 - Introducción :
 
 **¿Quién, dónde y cuándo se crea el primer servidor web?**
@@ -24,6 +26,13 @@
 
 
 **¿Componentes de una URL?**
+
+<br>
+
+<img src="./rsc/images/URL.png" alt="urlimage" width="340"/>
+
+<br>
+
 1. Esquema/Protocolo que utiliza.
 2. Nombre del dominio.
 3. El puerto que utiliza (suele ser opcional, salvo casos como redes internas)
@@ -50,24 +59,32 @@
 
 - Con Telnet ya activado, abrimos la línea de comandos y ejecutamos el comando de **Telnet** para comunicarnos con un servidor web, lo hacemos con el siguiente comando
 
-``
-telnet Nombre_Dominio Puerto
+``telnet Nombre_Dominio Puerto
 ``
 
-Podemos acompañar con la ejecución del comando, una petición a través de ***GET***, lo que nos daría información relativa a la comunicación que hemos establecido. En la siguiente información vemos un ejemplo.
+Podemos acompañar con la ejecución del comando, una petición a través de ***GET***, lo que nos daría información relativa a la comunicación que hemos establecido. En la siguiente imagen vemos un ejemplo.
 
 <img src="./rsc/images/Telnet out.png" alt="logos" width="540"/>
+
+<br>
 
 
 **Request. Métodos principales**
 - GET y POST
 
+<br>
+
 **Response. Códigos**
-- 1XX – Informativo
-- 2XX – OK
-- 3XX - Redirección
-- 4XX – Error
-- 5XX – Errores del servidor
+
+| Nº Código | Descripción  |
+|---|---|
+| 100-199 |  Respuesta informativa |
+| 200-299 | Respuesta satisfactoria |
+| 300-399 | Redirección |
+| 400-499 | Error del cliente |
+| 500-599 | Erro del servidor |
+
+<br>
 
 **Content type. Tipos principales**
 - Texto / HTML
