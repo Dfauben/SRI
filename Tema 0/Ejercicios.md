@@ -21,6 +21,7 @@
 
 ### ¿Quién, dónde y cuándo se crea el primer servidor web?
 <br>
+
 - Tim Berners-Lee junto a Robert Cailliau fueron los creadores del primer servidor web, se creó entre 1989 y 1990 en el CERN (Conseil Européen pour la Recherche Nucléaire o Organización Europea para la Investigación Nuclear).
 
 <br>
@@ -90,6 +91,8 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 
 
 ### Response. Códigos
+
+<br>
 
 | Nº Código | Descripción  |
 |---|---|
