@@ -26,10 +26,9 @@
 
 ### ¿Qué es pila de protocolos usados por http?
 
-- TCP/IP
+- La pila de porotocolos TCP/IP
 
 <br>
-
 
 ### ¿Componentes de una URL?
 
@@ -59,7 +58,7 @@
 <br>
 
 ### ¿Cómo usar telnet para acceder a un servidor web?
-- Activamos el cliente Telnet en caso de que no lo tengamos activado. Para ello accedemos a ***"Activar o desactivar las características de Windows"*** y buscamos la opción de **cliente de Telnet**.
+1. Activamos el cliente Telnet en caso de que no lo tengamos activado. Para ello accedemos a ***"Activar o desactivar las características de Windows"*** y buscamos la opción de **cliente de Telnet**.
 
 <br>
 
@@ -67,7 +66,7 @@
 
 </br>
 
-- Con Telnet ya activado, abrimos la línea de comandos y ejecutamos el comando de **Telnet** para comunicarnos con un servidor web, lo hacemos con el siguiente comando
+2. Con Telnet ya activado, abrimos la línea de comandos y ejecutamos el comando de **Telnet** para comunicarnos con un servidor web, lo hacemos con el siguiente comando
 
 ``telnet Nombre_Dominio Puerto
 ``
@@ -81,7 +80,18 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 
 
 ### Request. Métodos principales
-- GET y POST
+
+| Método | Descripción |
+|:-:|:-:|
+| GET | Solicita un recurso |
+| HEAD | Al igual que GET solicita un recurso, pero sin el *BODY* del recurso (Solo *HEAD*) |
+| POST | Envío de un recurso|
+| PUT | Parecido a POST salvo que PUT es un método idempotente (la reiteración a su llamada no tiene un efecto)|
+| DELETE | Borra un recurso |
+| CONNECT | Crea un túnel de conexión con el servidor con el recurso como identificador |
+| OPTIONS | Permite describir opciones de comunicación para el recurso de destino |
+| TRACE | Realiza una prueba en la que se obtiene información del envío del recurso|
+| PATCH | Aplica modificaciones parciales a un recurso|
 
 <br>
 
@@ -91,21 +101,66 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 <br>
 
 | Nº Código | Descripción  |
-|---|---|
+|:-:|:-:|
 | 100-199 |  Respuesta informativa |
 | 200-299 | Respuesta satisfactoria |
 | 300-399 | Redirección |
 | 400-499 | Error del cliente |
-| 500-599 | Erro del servidor |
+| 500-599 | Error del servidor |
 
 <br>
 
 
 ### Content type. Tipos principales
-- Texto / HTML
 
 <br>
 
+<table>
+    <th>Tipo</th>
+    <th>Formato</th>
+    <tr>
+        <td rowspan="2">Aplicación</td>
+        <td>PDF</td>
+    </tr>
+    <tr>
+        <td>XML</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Audio</td>
+        <td>ogg</td>
+    </tr>
+    <tr>
+        <td>mpeg</td>
+    </tr>
+        <tr>
+        <td rowspan="2">Imagen</td>
+        <td>apng</td>
+    </tr>
+    <tr>
+        <td>jpeg</td>
+    </tr>
+        <tr>
+        <td rowspan="4">Texto</td>
+        <td>css</td>
+    </tr>
+    <tr>
+        <td>html</td>
+    </tr>
+    <tr>
+        <td>php</td>
+    </tr>
+    <tr>
+        <td>xml</td>
+    </tr>
+    <tr>
+        <td>Video</td>
+        <td>mp4</td>
+    </tr>
+</table>
+
+
+<br>
+<br>
 
 ## Ejercicio 2 - UDP and TCP. Comparison of Transport Protocol :
 
@@ -140,10 +195,14 @@ Podemos acompañar con la ejecución del comando, una petición a través de ***
 - Proceso en el que se establece una conexión segura entre dos dispositivos/máquinas a través de una red de conexión TCP/IP confirmando que ambas partes se encuentras listas para la comunicación.
 
 <br>
+<br>
 
 ## Ejercicio 3 - Práctica Telnet/HTTP :
 
 ### p
+
+<br>
+<br>
 
 ## Ejercicio 4 - Usando cURL :
 
@@ -157,6 +216,9 @@ El comando cURL abreviatura de ***Client URL*** nos permite conectarnos a una UR
 ``
 cURL 'Nombre del dominio' > Nombre_archivo.html
 ``
+
+<br>
+<br>
 
 ## Ejercicio 5 - Práctica a Servidor Web :
 
