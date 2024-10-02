@@ -245,4 +245,4 @@ Existen varias formas de crear un hosting improvisado para nuestro servidor, vea
 
 **Nota: En caso de que no tengamos preparado un documento html, aparecerá el sistema de archivos de la máquina, algo que puede llegar a ser bastante peligroso**.
 
-### 
+### Método 2 - HTTP server
