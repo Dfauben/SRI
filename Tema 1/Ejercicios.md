@@ -1,5 +1,19 @@
 # Tema 1 - Servidores Web
 
+## Indice
+
+- [Inicio ](../README.md)
+- [Tema 0 - Introducción ](../Tema%200/Ejercicios.md)
+- [Tema 1 - Servidores Web ](#indice)
+  - [Actividad #1](#)
+    - [Instalación de Apache ](#)
+    - [Instalación de MySQL ](#)
+    - [Instalación de PHP ](#)
+    - [Creación de un Host Virtual para la página](#)
+  - [Actividad #2](#)
+- [Tema 2 - Placeholder ](#Tema-X-Placeholder)
+- [Tema 3 - Placeholder ](#Tema-X-Placeholder)
+
 ## Actividad #1
 
 ### La arquitectura Web es un modelo compuesto de tres capas, ¿cuáles son y cuál es  la función de cada una de ellas?
@@ -109,7 +123,33 @@ nano /var/www/your_domain/index.html
 </html>
 ````
 
+<br>
+
+<img src="./rsc/img/index.png" alt="index" width="470"/>
+
+<br>
+
+### Probando PHP en el Servidor Web
+
+Vamos a crear un documento PHP de prueba con el que confirmar que PHP se encuentra instalado y en funcionamiento, para ello escribimos el siguiente comando en la terminal de Linux.
+
 ````
+nano /var/www/Nombre_Dominio/info.php
 ````
-2.
-3.
+
+Ahora con el editor de texto abierto, creamos las siguientes líneas dentro del documento:
+
+````
+<?php
+phpinfo();
+````
+
+Finalmente guardamos los cambios del documento con **CTRL + O** y lo cerramos con **CTRL + X**. Ahora simplemento añadimos a nuestra URL habitual el sufijo ***/info.php***, quedaría nuestra URL de la siguiente forma:
+
+````
+localhost/info.php
+````
+
+<br>
+
+<img src="./rsc/img/phpinfo.png" alt="phpinfo" width="470"/>
