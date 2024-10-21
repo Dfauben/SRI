@@ -153,3 +153,116 @@ localhost/info.php
 <br>
 
 <img src="./rsc/img/phpinfo.png" alt="phpinfo" width="470"/>
+
+
+## Actividad #2
+
+### 1. Creación de un script que añada un puerto de escucha en el fichero de configuración de Apache
+
+#### Accedemos a la carpeta de donde se contiene la configuración de Apache.
+
+````bash
+cd /etc/apache2
+````
+
+#### Creamos y editamos el script en el que realizaremos las acciones.
+
+````bash
+gedit ejercicio1.sh
+````
+
+Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
+
+````bash
+#!/bin/bash
+
+if [ $# -eq  0 ]; then
+  echo 'Error';                     # Se comrpueba que existe parametro
+else
+  grep "$1" ports.conf              # Con el comando grep comprobamos si
+                                    # existe el puerto pasado por parametro
+  
+  if [ $? -ne 0 ]; then             # El parametro $? es un booleano que 
+                                    # guarda información del ultimo comando
+
+    cp ports.conf ports.bak         # Hace una copia de seguridad
+    echo "listen $1" >> ports.conf  # Añade a ports.conf el puerto pasado por parametro
+  else
+    echo 'El puerto de escucha ya existe'
+  fi
+fi
+````
+
+#### Prueba del código
+
+Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamos posicionados):
+
+````bash
+bash NombreScript.sh NumeroPuerto
+````
+
+<img src="./rsc/img/apacheconf1_2.png" alt="phpinfo" width="470"/>
+
+<br>Al ejecutarlo podemos comprobar que al no ser un puerto existente se ha creado primero un respaldo del archivo.</br>
+
+<img src="./rsc/img/apacheconf1.png" alt="phpinfo" width="470"/>
+
+<br> Si nos vamos al archivo de ports.conf podemos comprobar el puerto se ha añadido.
+
+<img src="./rsc/img/apacheconf1_3.png" alt="phpinfo" width="470"/>
+
+### 2. Creación de un script que añada un nombre de dominio y una ip en el fichero hosts.
+
+#### Accedemos a la carpeta de donde se contiene el fichero hosts.
+
+````bash
+cd /etc/
+````
+
+#### Creamos y editamos el script en el que realizaremos las acciones.
+
+````bash
+sudo gedit ejercicio2.sh
+````
+Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
+
+````bash
+#!/bin/bash
+
+if [ $# -eq  0 ]; then
+  echo 'Error';                     # Se comrpueba que existe parametro
+else
+  grep "$1" hosts                   # Con el comando grep comprobamos si
+                                    # existe el dominio pasado por parametro
+  
+  if [ $? -ne 0 ]; then             # El parametro $? es un booleano que 
+                                    # guarda información del ultimo comando
+
+    cp hosts hosts.bak         # Hace una copia de seguridad
+    echo "$2  $1" >> hosts     # Añade a hosts el dominio y la IP pasados por parametro
+  else
+    echo 'El dominio ya existe'
+  fi
+fi
+
+````
+
+#### Prueba del código
+
+Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamos posicionados):
+
+````bash
+bash NombreScript.sh NombreDominio IP
+````
+
+<img src="./rsc/img/apacheconf2_1.png" alt="phpinfo" width="470"/>
+
+<br>Al ejecutarlo podemos comprobar que al no ser un puerto existente se ha creado primero un respaldo del archivo.</br>
+
+<img src="./rsc/img/apacheconf2_2.png" alt="phpinfo" width="470"/>
+
+<br> Si nos vamos al archivo de hosts podemos comprobar que el dominio se ha añadido.
+
+<img src="./rsc/img/apacheconf2_3.png" alt="phpinfo" width="470"/>
+
+
