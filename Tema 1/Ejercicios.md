@@ -171,7 +171,7 @@ cd /etc/apache2
 #### Creamos y editamos el script en el que realizaremos las acciones.
 
 ````bash
-gedit ejercicio1.sh
+gedit NombreScript.sh
 ````
 
 Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
@@ -180,7 +180,7 @@ Se abrira una nueva ventana, el editor de textos para nuestro script. En él des
 #!/bin/bash
 
 if [ $# -eq  0 ]; then
-  echo 'Error';                     # Se comrpueba que existe parametro
+  echo 'Error';                     # Se comprueba que existe parametro
 else
   grep "$1" ports.conf              # Con el comando grep comprobamos si
                                     # existe el puerto pasado por parametro
@@ -228,7 +228,7 @@ cd /etc/
 #### Creamos y editamos el script en el que realizaremos las acciones.
 
 ````bash
-sudo gedit ejercicio2.sh
+sudo gedit NombreScript.sh
 ````
 Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
 
@@ -236,7 +236,7 @@ Se abrira una nueva ventana, el editor de textos para nuestro script. En él des
 #!/bin/bash
 
 if [ $# -eq  0 ]; then
-  echo 'Error';                     # Se comrpueba que existe parametro
+  echo 'Error';                     # Se comprueba que existe parametro
 else
   grep "$1" hosts                   # Con el comando grep comprobamos si
                                     # existe el dominio pasado por parametro

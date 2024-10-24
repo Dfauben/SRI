@@ -26,8 +26,8 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
-| 1 |   |
-| 2 |   |
+| 1 | [Pasos a seguir en la instalación de Apache](#)  |
+| 2 | [Uso de scripts en la configuración básica de Apache](./Tema%201/Ejercicios.md#actividad-2)  |
 | 3 |   |
 | 4 |   |
 
