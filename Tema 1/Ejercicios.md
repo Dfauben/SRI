@@ -10,7 +10,10 @@
     - [Instalación de MySQL ](#)
     - [Instalación de PHP ](#)
     - [Creación de un Host Virtual para la página](#)
-  - [Actividad #2](#)
+  - [Actividad #2](#actividad-2)
+    - [Script que añada un puerto de escucha en el fichero de configuración de Apache](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
+    - [Script que añada un nombre de dominio y una ip en el fichero hosts.](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
+    - [Script que nos permita crear una página web con un título, una cabecera y un mensaje](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje) 
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 
