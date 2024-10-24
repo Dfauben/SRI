@@ -211,6 +211,9 @@ bash NombreScript.sh NumeroPuerto
 
 <img src="./rsc/img/apacheconf1_3.png" alt="phpinfo" width="470"/>
 
+<br>
+<br>
+
 ### 2. Creación de un script que añada un nombre de dominio y una ip en el fichero hosts.
 
 #### Accedemos a la carpeta de donde se contiene el fichero hosts.
@@ -265,9 +268,12 @@ bash NombreScript.sh NombreDominio IP
 
 <img src="./rsc/img/apacheconf2_3.png" alt="phpinfo" width="470"/>
 
+<br>
+<br>
+
 ### 3. Crea un script que nos permita crear una página web con un título, una cabecera y un mensaje.
 
-#### Accedemos a la carpeta de donde se contiene el fichero hosts.
+#### Accedemos a la carpeta de donde se contiene los dominios y los htmls.
 
 ````bash
 cd /var/www/
@@ -276,7 +282,7 @@ cd /var/www/
 #### Creamos y editamos el script en el que realizaremos las acciones.
 
 ````bash
-sudo gedit ejercicio3.sh
+sudo gedit NombreScript.sh
 ````
 Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
 
@@ -318,16 +324,16 @@ fi
 Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamos posicionados):
 
 ````bash
-bash NombreScript.sh NombreDominio IP
+bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje 
 ````
 
-<img src="./rsc/img/apacheconf2_1.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_1.png" alt="phpinfo" width="470"/>
 
-<br>Al ejecutarlo podemos comprobar que al no ser un puerto existente se ha creado primero un respaldo del archivo.</br>
+<br>Podemos observar que nuestra pagina se crea correctamente</br>
 
-<img src="./rsc/img/apacheconf2_2.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_2.png" alt="phpinfo" width="470"/>
 
-<br> Si nos vamos al archivo de hosts podemos comprobar que el dominio se ha añadido.
+<br>Si ingresamos en nuestro navegador la URI correcta, vemos que funciona tal y como se describe
 
-<img src="./rsc/img/apacheconf2_3.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
 
