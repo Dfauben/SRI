@@ -270,7 +270,7 @@ bash NombreScript.sh NombreDominio IP
 #### Accedemos a la carpeta de donde se contiene el fichero hosts.
 
 ````bash
-cd /etc/www/
+cd /var/www/
 ````
 
 #### Creamos y editamos el script en el que realizaremos las acciones.
@@ -284,27 +284,28 @@ Se abrira una nueva ventana, el editor de textos para nuestro script. En él des
 #!/bin/bash
 
 if [ $# -eq  0 ]; then
-  echo 'Error';                     # Se comrpueba que existe parametro
+  echo 'Error';                     # Se comprueba que existen parametros
 else
-  grep "$1" hosts                   # Con el comando grep comprobamos si
-                                    # existe el dominio pasado por parametro
-  
-  if [ $? -ne 0 ]; then             # El parametro $? es un booleano que 
-                                    # guarda información del ultimo comando
 
-    sudo mkdir $1                               # Hace una copia de seguridad
-    echo "<!doctype html>" > /$1/index.html     # Añade a hosts el dominio y la IP pasados por parametro
-    echo "<html>" >> /$1/index.html
-    echo "\t<head>" >> /$1/index.html
-    echo "\t\t<title>This is the title of the webpage!</title>" >> /$1/index.html
-    echo "\t</head>" >> /$1/index.html
-    echo "\t<body>" >> /$1/index.html
-    echo "\t\t<h1>This is an example paragraph.</h1>" >> /$1/index.html
-    echo "\t\t<p>This is an example paragraph.</p>" >> /$1/index.html
-    echo "\t</body>" >> /$1/index.html
-    echo "<html>" >> /$1/index.html
+  FILE="etc/var/www/*/$1.html"      # Ruta donde se guardan archivos html
+  if [ ! -f "$FILE" ]; then         # Se comprueba que no existe el archivo html a crear
+                                    
+    if [ -d "$1" ]; then            # Se comprueba que existe el directorio de la pagina
+      echo "<!doctype html>" > $1/$1.html     
+      echo "<html>" >> $1/$1.html
+      echo -e "\t<head>" >> $1/$1.html
+      echo -e "\t\t<title>This is the title of the webpage!</title>" >> $1/$1.html
+      echo -e "\t</head>" >> $1/$1.html
+      echo -e "\t<body>" >> $1/$1.html
+      echo -e "\t\t<h1>This is an example paragraph.</h1>" >> $1/$1.html
+      echo -e "\t\t<p>This is an example paragraph.</p>" >> $1/$1.html
+      echo -e "\t</body>" >> $1/$1.html
+      echo "<html>" >> $1/$1.html
+    else
+      echo "El directorio $1 no existe"
+    fi
   else
-    echo 'El dominio ya existe'
+    echo "La pagina $1 ya existe"
   fi
 fi
 
