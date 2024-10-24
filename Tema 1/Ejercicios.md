@@ -283,29 +283,31 @@ Se abrira una nueva ventana, el editor de textos para nuestro script. En él des
 ````bash
 #!/bin/bash
 
+# Existen 4 parametros 1- Nombre Dominio || 2- Titulo || 3- Encabezado || 4- Mensaje 
+
 if [ $# -eq  0 ]; then
   echo 'Error';                     # Se comprueba que existen parametros
 else
 
-  FILE="etc/var/www/*/$1.html"      # Ruta donde se guardan archivos html
+  FILE="/var/www/$1/$2.html"        # Ruta donde se guardan archivos html
   if [ ! -f "$FILE" ]; then         # Se comprueba que no existe el archivo html a crear
                                     
-    if [ -d "$1" ]; then            # Se comprueba que existe el directorio de la pagina
-      echo "<!doctype html>" > $1/$1.html     
-      echo "<html>" >> $1/$1.html
-      echo -e "\t<head>" >> $1/$1.html
-      echo -e "\t\t<title>This is the title of the webpage!</title>" >> $1/$1.html
-      echo -e "\t</head>" >> $1/$1.html
-      echo -e "\t<body>" >> $1/$1.html
-      echo -e "\t\t<h1>This is an example paragraph.</h1>" >> $1/$1.html
-      echo -e "\t\t<p>This is an example paragraph.</p>" >> $1/$1.html
-      echo -e "\t</body>" >> $1/$1.html
-      echo "<html>" >> $1/$1.html
+    if [ -d "$1" ]; then            # Se comprueba que existe el directorio del dominio
+      echo "<!doctype html>" > $1/$2.html     
+      echo "<html>" >> $1/$2.html
+      echo -e "\t<head>" >> $1/$2.html
+      echo -e "\t\t<title>$2</title>" >> $1/$2.html
+      echo -e "\t</head>" >> $1/$2.html
+      echo -e "\t<body>" >> $1/$2.html
+      echo -e "\t\t<h1>$3</h1>" >> $1/$2.html
+      echo -e "\t\t<p>$4</p>" >> $1/$2.html
+      echo -e "\t</body>" >> $1/$2.html
+      echo "<html>" >> $1/$2.html
     else
-      echo "El directorio $1 no existe"
+      echo "El dominio $1 no existe"
     fi
   else
-    echo "La pagina $1 ya existe"
+    echo "La pagina $2 ya existe"
   fi
 fi
 
