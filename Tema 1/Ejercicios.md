@@ -265,4 +265,66 @@ bash NombreScript.sh NombreDominio IP
 
 <img src="./rsc/img/apacheconf2_3.png" alt="phpinfo" width="470"/>
 
+### 3. Crea un script que nos permita crear una página web con un título, una cabecera y un mensaje.
+
+#### Accedemos a la carpeta de donde se contiene el fichero hosts.
+
+````bash
+cd /etc/www/
+````
+
+#### Creamos y editamos el script en el que realizaremos las acciones.
+
+````bash
+sudo gedit ejercicio3.sh
+````
+Se abrira una nueva ventana, el editor de textos para nuestro script. En él desarrollamos el siguiente código:
+
+````bash
+#!/bin/bash
+
+if [ $# -eq  0 ]; then
+  echo 'Error';                     # Se comrpueba que existe parametro
+else
+  grep "$1" hosts                   # Con el comando grep comprobamos si
+                                    # existe el dominio pasado por parametro
+  
+  if [ $? -ne 0 ]; then             # El parametro $? es un booleano que 
+                                    # guarda información del ultimo comando
+
+    sudo mkdir $1                               # Hace una copia de seguridad
+    echo "<!doctype html>" > /$1/index.html     # Añade a hosts el dominio y la IP pasados por parametro
+    echo "<html>" >> /$1/index.html
+    echo "\t<head>" >> /$1/index.html
+    echo "\t\t<title>This is the title of the webpage!</title>" >> /$1/index.html
+    echo "\t</head>" >> /$1/index.html
+    echo "\t<body>" >> /$1/index.html
+    echo "\t\t<h1>This is an example paragraph.</h1>" >> /$1/index.html
+    echo "\t\t<p>This is an example paragraph.</p>" >> /$1/index.html
+    echo "\t</body>" >> /$1/index.html
+    echo "<html>" >> /$1/index.html
+  else
+    echo 'El dominio ya existe'
+  fi
+fi
+
+````
+
+#### Prueba del código
+
+Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamos posicionados):
+
+````bash
+bash NombreScript.sh NombreDominio IP
+````
+
+<img src="./rsc/img/apacheconf2_1.png" alt="phpinfo" width="470"/>
+
+<br>Al ejecutarlo podemos comprobar que al no ser un puerto existente se ha creado primero un respaldo del archivo.</br>
+
+<img src="./rsc/img/apacheconf2_2.png" alt="phpinfo" width="470"/>
+
+<br> Si nos vamos al archivo de hosts podemos comprobar que el dominio se ha añadido.
+
+<img src="./rsc/img/apacheconf2_3.png" alt="phpinfo" width="470"/>
 
