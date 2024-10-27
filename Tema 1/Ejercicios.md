@@ -11,9 +11,9 @@
     - [Instalación de PHP ](#)
     - [Creación de un Host Virtual para la página](#)
   - [Actividad #2](#actividad-2)
-    - [Script que añada un puerto de escucha en el fichero de configuración de Apache](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
-    - [Script que añada un nombre de dominio y una ip en el fichero hosts.](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
-    - [Script que nos permita crear una página web con un título, una cabecera y un mensaje](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje) 
+    - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
+    - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
+    - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje) 
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 
@@ -25,30 +25,36 @@
 
 ### Instalación de Apache en Ubuntu
 
-1.
+1. Abrimos una terminal y logeamos como root
 
 ````
 sudo -i
 ````
+2. Actualizamos los paquetes instalados
 `````
 apt update
 `````
-
+3. Instalamos las nuevas versiones
+````
+apt upgrade
+````
+4. Instalamos el paquete de Apache
 `````
 apt install apache2
 `````
-
+5. Ajustamos el Firewall para Apache con los siguientes dos comandos:
 `````
 ufw app list
 `````
-
 `````
 ufw allow "Apache"
 `````
-
-``
+6. Comprobar en nuestro navegador la siguiente dirección
+````
 https://localhost
-``
+````
+Si hemos seguido los paso habremos instalado correctamente Apache2 para Ubuntu<br>
+<img src="./rsc/img/apachecinstall1.png" alt="index" style="display: block; margin:15 auto" width="470"/>
 
 ### Instalación de MySQL
 
@@ -330,13 +336,13 @@ Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamo
 bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje 
 ````
 
-<img src="./rsc/img/apacheconf3_1.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_1.png" alt="phpinfo" style="display: block; margin:25 auto 0" width="470"/>
 
 <br>Podemos observar que nuestra pagina se crea correctamente</br>
 
-<img src="./rsc/img/apacheconf3_2.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_2.png" alt="phpinfo" style="display: block; margin:15 auto" width="470"/>
 
 <br>Si ingresamos en nuestro navegador la URI correcta, vemos que funciona tal y como se describe
 
-<img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" style="display: block; margin:15 auto" width="470"/>
 
