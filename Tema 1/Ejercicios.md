@@ -53,43 +53,54 @@ ufw allow "Apache"
 ````
 https://localhost
 ````
-Si hemos seguido los paso habremos instalado correctamente Apache2 para Ubuntu<br>
-<img src="./rsc/img/apachecinstall1.png" alt="index" style="display: block; margin:15 auto" width="470"/>
+Si hemos seguido los paso habremos instalado correctamente Apache2 para Ubuntu
+<img src="./rsc/img/apachecinstall1.png" alt="index" width="570"/>
+
+<br>
 
 ### Instalación de MySQL
+
+1. Instalamos MySQL-server
 
 `````
 apt install mysql-server
 `````
-
+2. Comprobamos, entrando a MySQL con el siguiente comando:
 `````
-mysql // exit
+sudo mysql 
 `````
+3. Para salir de MySQL:
+`````
+exit
+`````
+<br>
 
 ### Instalación de PHP
-
+1. Instalamos PHP
 ````
 sudo apt install php libapache2-mod-php php-mysql
 ````
-
+2. Comprobar la version de PHP
 ````
 php -v
 ````
+<br>
 
 ### Creación de un Host Virtual para la página
 
+1. Creamos el directorio para nuestro dominio.
 ````
 mkdir /var/www/your_domain
 ````
-
+2. Asignamos como propietario al usuario.
 ````
 chown -R $USER:$USER /var/www/your_domain
 ````
-
+3. Configuramos nuestro dominio con el siguiente comando:
 ````
 nano /etc/apache2/sites-available/your_domain.conf
 ````
-
+4. Una vez ejecutado el comando anterior, podremos editar el documento de configuración. Guardamos con **CTRL + O** y **CTRL + X**
 ````
 <VirtualHost *:80>
     ServerName your_domain
@@ -100,22 +111,23 @@ nano /etc/apache2/sites-available/your_domain.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ````
-
+5. Habilitamos el dominicio
 ````
 a2ensite your_domain
 ````
-
+**Opcional** - Deshabilitar el dominio por defecto de PHP.
 ````
 a2dissite 000-default
 ````
-
+6. Comprobamos que nuestra configuracion no tenga problemas de sintaxis
 ````
 apache2ctl configtest
 ````
-
+7. Cargamnos los cambios en Apache.
 ````
 systemctl reload apache2
 ````
+8. Modificamos la pagina principal de nuestro dominio.
 ````
 nano /var/www/your_domain/index.html
 ````
@@ -131,7 +143,7 @@ nano /var/www/your_domain/index.html
   </body>
 </html>
 ````
-
+Resultado del html anterior en nuesto dominio:
 <br>
 
 <img src="./rsc/img/index.png" alt="index" width="470"/>
@@ -336,13 +348,13 @@ Comenzamos ejecutando el siguiente comando (Hay que tener en cuenta donde estamo
 bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje 
 ````
 
-<img src="./rsc/img/apacheconf3_1.png" alt="phpinfo" style="display: block; margin:25 auto 0" width="470"/>
+<img src="./rsc/img/apacheconf3_1.png" alt="phpinfo" width="470"/>
 
 <br>Podemos observar que nuestra pagina se crea correctamente</br>
 
-<img src="./rsc/img/apacheconf3_2.png" alt="phpinfo" style="display: block; margin:15 auto" width="470"/>
+<img src="./rsc/img/apacheconf3_2.png" alt="phpinfo" width="470"/>
 
 <br>Si ingresamos en nuestro navegador la URI correcta, vemos que funciona tal y como se describe
 
-<img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" style="display: block; margin:15 auto" width="470"/>
+<img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
 
