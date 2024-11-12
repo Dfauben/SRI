@@ -13,7 +13,14 @@
   - [Actividad #2](#actividad-2)
     - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
     - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
-    - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje) 
+    - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
+  - [Actividad #7 - Rewrite](#actividad-7---rewrite)
+    - [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
+    - [Creación de un .htacces](#crear-un-htacces-para-rewrite)
+    - [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
+    - [URL amigable](#url-amigable)
+    - [Redirección a página externa](#redireccionar-a-una-página-externa)
+    - [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 
@@ -405,7 +412,7 @@ Buscamos la línea <Directory /var/www/> y escribimos:
   AllowOverride all
 ````
 
-<img src="./rsc/img/rewrite1.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/Rewrite1.png" alt="phpinfo" width="470"/>
 
 <br>
 <br>
@@ -449,7 +456,7 @@ Así nos quedaría una URL más simple y totalmente funcional como lo es:
 http://localhost/suma/6/8
 ``
 
-<img src="./rsc/img/rewrite2.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/Rewrite2.png" alt="phpinfo" width="470"/>
 
 ### Redireccionar a una página externa
 
@@ -469,4 +476,4 @@ RewriteRule ^index\.html$ index.moz.html [L]
 ````
 Con esta sentencia cambiaremos el index predeterminado a uno específico para el navegador de Mozilla.
 
-<img src="./rsc/img/rewrite3.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/Rewrite3.png" alt="phpinfo" width="470"/>
