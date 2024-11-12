@@ -20,8 +20,28 @@
 ## Actividad #1
 
 ### La arquitectura Web es un modelo compuesto de tres capas, ¿cuáles son y cuál es  la función de cada una de ellas?
+<br>
+
+|     Capa     |          Función             |
+|:------------:|:----------------------------:|
+| Presentación | Muestra una interfaz para el usuario y por la que este interactuará con la web  |
+| Aplicación   | Procesa la parte lógica con los datos proporcionados de las otras dos capas |
+| Datos        | Almacena y gestiona los datos procesados en una base de datos  |
+
+<br>
+<br>
 
 ### Una plataforma web es el entorno de desarrollo de software empleado para  diseñar y ejecutar un sitio web; destacan dos plataformas web, LAMP y WISA. Explica en qué consiste cada una de ellas.
+<br>
+
+ - LAMP - Infraestructura web que utiliza **Linux, Apache, MySQL y PHP**
+
+ <br>
+ 
+ - WISA - Infraestructura web que utiliza **Windows, IIS, SQL y ASP.NET**
+
+ <br>
+ <br>
 
 ### Instalación de Apache en Ubuntu
 
@@ -53,7 +73,7 @@ ufw allow "Apache"
 ````
 https://localhost
 ````
-Si hemos seguido los paso habremos instalado correctamente Apache2 para Ubuntu
+Si hemos seguido los pasos habremos instalado correctamente Apache2 para Ubuntu
 <img src="./rsc/img/apachecinstall1.png" alt="index" width="570"/>
 
 <br>
@@ -111,7 +131,7 @@ nano /etc/apache2/sites-available/your_domain.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ````
-5. Habilitamos el dominicio
+5. Habilitamos el dominio
 ````
 a2ensite your_domain
 ````
@@ -358,3 +378,95 @@ bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje
 
 <img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
 
+
+## Actividad #7 - Rewrite
+
+Este módulo de Apache habilita la capacidad de reescribir URLs mediante el uso de expresiones regulares
+
+**NOTA: Debemos habilitar el módulo en Apache para poder utilizarlo**
+
+### Habilitando el módulo Rewrite
+
+En una terminal escribiremos:
+````
+a2enmod rewrite
+````
+
+### Crear un .htacces para Rewrite
+
+Existen múltiples formas de habilitar este módulo en nuestro dominio, en este caso se utilizará un archivo .htaccess, para ello primero accederemos al archivo de configuración de apache.
+
+````
+nano /etc/apache2/apache2.conf
+````
+Buscamos la línea <Directory /var/www/> y escribimos:
+````
+<Directory /var/www/>
+  AllowOverride all
+````
+
+<img src="./rsc/img/rewrite1.png" alt="phpinfo" width="470"/>
+
+<br>
+<br>
+
+Nos tocará reiniciar Apache para que los cambios tengan efecto:
+
+````
+systemctl restart apache2 
+````
+
+Ahora podremos crear nuestro archivo .htaccess en el que escribiremos nuestras reglas de Rewrite. Lo creamos en la carpeta de nuestro dominio, será importante como mínimo (para utilizar Rewrite) escribir la siguiente línea:
+````
+RewriteEngine On
+````
+
+### Redirección URL con diferente extensión
+
+Para hacer una redirección con cambio de extensión escribimos:
+````
+RewriteRule ^Nombre_Archivo\.html$ Nombre_Archivo.php
+````
+En la anterior sentencia redireccionamos el nombre de archivo con extensión **html** al archivo existente con extensión php. (La extensión puede ser cualquiera en ambos sentidos)
+
+### URL amigable
+
+Para hacer que nuestra URL trate de igual forma los datos pero de una forma más cómoda, creamos URLs amigables, por ejemplo en el caso de un archivo que realice operaciones matématicas simples podemos transformar
+
+``
+http://localhost/operacion.php?op=suma&op1=6&op2=8
+``
+<br>
+<br>A una url más 'amigable' con la siguiente regla:
+
+````
+RewriteBase /
+RewriteRule ^([a-z]+)/([0-9]+)/([0-9]+)$ operacion.php?op=$1&op1=$2&op2=$3
+````
+Así nos quedaría una URL más simple y totalmente funcional como lo es:
+
+``
+http://localhost/suma/6/8
+``
+
+<img src="./rsc/img/rewrite2.png" alt="phpinfo" width="470"/>
+
+### Redireccionar a una página externa
+
+Imaginemos que queremos que a través de una dirección de nuestro dominio se nos redirija a una página externa, por ejemplo en caso de querer buscar algo se nos redirija a la misma busqueda pero hecha por Google. Para ello escribimos:
+
+````
+RewriteRule ^buscar=(.+) https://google.com/search?q=$1
+````
+
+### Redireccionar según el navegador utilizado
+
+En caso de que queramos tener en cuenta el navegador del cliente y reaccionar con una redirección utilizaramos la condición de USER_AGENT. Para un cliente con mozilla podremos escribir lo siguiente:
+
+````
+RewriteCond %{HTTP_USER_AGENT} ^Mozilla.+
+RewriteRule ^index\.html$ index.moz.html [L]
+````
+Con esta sentencia cambiaremos el index predeterminado a uno específico para el navegador de Mozilla.
+
+<img src="./rsc/img/rewrite3.png" alt="phpinfo" width="470"/>
