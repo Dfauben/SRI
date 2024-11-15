@@ -11,7 +11,6 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 - [Tema 1 - Servidores Web ](./Tema%201/Ejercicios.md)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Prácticas ](contenidos.md)
-    - [1º Trimestre - Servidores Web ](Practica1.md)
 
 
 ## Tema 0 Introducción
@@ -49,5 +48,4 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 1 | [Servidores Web](./Practica%201º%20Trimestre/Practica1.md)| 
 | 2 | []() |
 | 3 | []() |
-| 4 | []() |
-| 5 | []() |
+
