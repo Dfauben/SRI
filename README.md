@@ -10,7 +10,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 - [Tema 0 - Introducción ](./Tema%200/Ejercicios.md)
 - [Tema 1 - Servidores Web ](./Tema%201/Ejercicios.md)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
-- [Prácticas ](contenidos.md)
+- [Prácticas ](./Practica%201º%20Trimestre/Practica1.md)
 
 
 ## Tema 0 Introducción
