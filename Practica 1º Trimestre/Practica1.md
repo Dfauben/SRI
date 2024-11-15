@@ -46,6 +46,9 @@ Si hemos seguido los pasos habremos instalado correctamente Apache2 para Ubuntu
 
 <br>
 
+
+## Activación de los módulos necesarios para PhP y MySQL
+
 ### Instalación de MySQL
 
 1. Instalamos MySQL-server
@@ -62,11 +65,6 @@ sudo mysql
 exit
 `````
 <br>
-
-
-## Activación de los módulos necesarios para PhP y MySQL
-
-
 
 ## Instalación y configuración Wordpress
 

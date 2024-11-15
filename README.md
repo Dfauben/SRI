@@ -39,3 +39,13 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 2 |   |
 | 3 |   |
 | 4 |   |
+
+## Prácticas
+
+| Nº Práctica | Nombre  |
+|:-:|:-:|
+| 1 | [Servidores Web](./Practica%201º%20Trimestre/Practica1.md)| 
+| 2 | []() |
+| 3 | []() |
+| 4 | []() |
+| 5 | []() |
