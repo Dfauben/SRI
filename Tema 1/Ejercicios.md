@@ -581,9 +581,10 @@ Nos quedaría tal que así:
 
 Ahora si ingresamos a la carpeta del dominio aparacerá lo siguiente:
 
-<p align="center">
+<div style="text-align: center">
   <img src="./rsc/img/auth5.png" alt="phpinfo" width="670"/>
-</p>
+</div>
+
 
 <br>
 <br>
