@@ -54,7 +54,7 @@ Si hemos seguido los pasos habremos instalado correctamente Apache2 para Ubuntu
 1. Instalamos MySQL-server
 
 `````
-apt install mysql-server
+sudo apt install mysql-server
 `````
 2. Comprobamos, entrando a MySQL con el siguiente comando:
 `````
@@ -73,18 +73,7 @@ exit
 Ejecutamos los siguientes comandos:
 
 `````
-sudo apt install ghostscript
-sudo apt install libapache2-mod-php
-sudo apt install mysql-server
-sudo apt install php
-sudo apt install php-bcmath
-sudo apt install curl
-sudo apt install php-intl
-sudo apt install php-json
-sudo apt install php-mbstring
-sudo apt install php-mysql
-sudo apt install php-xml
-sudo apt install php-zip
+sudo install php
 `````
 
 ### Instalamos Wordpress
@@ -92,23 +81,21 @@ sudo apt install php-zip
 1. Creamos la carpteta contenedora para Wordpress
 
 ````
-sudo mkdir -p /srv/www
+sudo mkdir -p /var/www/html
 ````
 
 2. Cambiamos los permisos de la carpeta
 
 ````
-sudo chown www-data: /srv/www
+sudo chown www-data: /var/www/html
 ````
 3. Descargamos los datos necesarios para Wordpress en dicha carpeta
 
 ````
-sudo curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www 
+
 ````
 
 <br>
-
-<img src="../Practica 1º Trimestre/rsc/img/Captura de pantalla 2024-11-15 160333.png" alt="index" width="570"/>
 
 <br>
 
@@ -123,18 +110,9 @@ sudo nano /etc/apache2/sites-available/wordpress.conf
 
 ````
 <VirtualHost *:80>
-    DocumentRoot /srv/www/wordpress
-    ServerName Wordpress.local
-    <Directory /srv/www/wordpress>
-        Options FollowSymLinks
-        AllowOverride Limit Options FileInfo
-        DirectoryIndex index.php
-        Require all granted
-    </Directory>
-    <Directory /srv/www/wordpress/wp-content>
-        Options FollowSymLinks
-        Require all granted
-    </Directory>
+    DocumentRoot /var/www/html
+    ServerName wordpress.local
+    ServerAdmin admin@localhost
 </VirtualHost>
 ````
 
@@ -165,8 +143,11 @@ sudo a2dissite 000-default
 <br>
 
 ````
-sudo nano /etc/
+sudo nano /etc/hosts
 ````
+
+<img src="../Practica 1º Trimestre/rsc/img/hosts.png" alt="index" width="570"/>
+
 
 <br>
 
@@ -178,38 +159,59 @@ sudo nano /etc/
 sudo service Apache2 reload
 ````
 
-<img src="../Practica 1º Trimestre/rsc/img/wordpress2.png" alt="index" width="570"/>
-
 <br>
 
 ### Configuración de la base de datos
+<br>
+
+Accedemos a MySQL como administradrores
 
 ````
 sudo mysql -u root
 ````
+<br>
+
+Creamos nuestra base datos, en este caso el nombre será wordpress
 ````
 CREATE DATABASE wordpress;
 ````
+<br>
+Creamos un usuario admin para MySQL 
+
 ````
-CREATE USER wordpress@localhost  IDENTIFIED  BY 'Contraseña';
+CREATE USER 'admin'@'localhost'  IDENTIFIED  BY 'admin';
 ````
+<br>
+Otorgamos todos los privilegios al usuario admin
+
 ````
-GRANT SELECT, INSTERT, UPDATE, DELETE, CREATE, DROP, ALTER
-    -> ON wordpress.*
-    -> TO wordpress@localhost;
+GRANT ALL PRIVILEGES -> ON wordpress.* -> TO 'admin'@'localhost';
 ````
+<br>
+Actualizamos los privilegios de nuestra base de datos
+
 ````
 FLUSH PRIVILEGES;
 ````
+<br>
+Cerramos la sesión de MySQL
+
 ````
 quit
 ````
+<br>
+
 <img src="../Practica 1º Trimestre/rsc/img/database.png" alt="index" width="570"/>
+
+<br>
 
 ### Configurar la conexión entre Wordpress y la base de datos
 
+<br>
+Copiamos la 
+
 ````
-sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
+sudo -u www-data cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 ````
 
 ````

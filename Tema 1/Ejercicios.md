@@ -4,23 +4,40 @@
 
 - [Inicio ](../README.md)
 - [Tema 0 - Introducción ](../Tema%200/Ejercicios.md)
-- [Tema 1 - Servidores Web ](#indice)
-  - [Actividad #1](#actividad-1)
-    - [Instalación de Apache ](#instalación-de-apache-en-ubuntu)
-    - [Instalación de MySQL ](#instalación-de-mysql)
-    - [Instalación de PHP ](#instalación-de-php)
-    - [Creación de un Host Virtual para la página](#creación-de-un-host-virtual-para-la-página)
-  - [Actividad #2](#actividad-2)
-    - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
-    - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
-    - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
-  - [Actividad #7 - Rewrite](#actividad-7---rewrite)
-    - [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
-    - [Creación de un .htacces](#crear-un-htacces-para-rewrite)
-    - [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
-    - [URL amigable](#url-amigable)
-    - [Redirección a página externa](#redireccionar-a-una-página-externa)
-    - [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
+
++ <details><summary> Tema 1 - Servidores Web</summary>
+
+
+  + <details><summary>Actividad #1 - Instalación de un servidor web</summary>
+  
+    + [Instalación de Apache ](#instalación-de-apache-en-ubuntu)
+    + [Instalación de MySQL ](#instalación-de-mysql)
+    + [Instalación de PHP ](#instalación-de-php)
+    + [Creación de un Host Virtual para la página](#creación-de-un-host-virtual-para-la-página)
+
+  </details>
+
+  + <details><summary>Actividad #2 - Scripts</summary>
+
+    + [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
+    + [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
+    + [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
+
+</details>
+
+  + <details><summary>Actividad #7 - Rewrite</summary>
+
+    + [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
+    + [Creación de un .htacces](#crear-un-htacces-para-rewrite)
+    + [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
+    + [URL amigable](#url-amigable)
+    + [Redirección a página externa](#redireccionar-a-una-página-externa)
+    + [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
+
+  </details>
+
+</details>
+
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 
