@@ -8,8 +8,8 @@
 - <details><summary>Tema 1 - Servidores Web</summary>
 
   <details>
-  <summary>Actividad #1</summary>
-  
+  <summary>Actividad #1 - Instalación del servidor web</summary>
+
   - [Instalación de Apache](#instalación-de-apache-en-ubuntu)
   - [Instalación de MySQL](#instalación-de-mysql)
   - [Instalación de PHP](#instalación-de-php)
@@ -17,7 +17,7 @@
 
   </details>
 
-  <details><summary>Actividad #2</summary>
+  <details><summary>Actividad #2 - Configuración básica de Apache (Scripts)</summary>
 
   - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
   - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
@@ -26,7 +26,7 @@
   </details>
 
   <details>
-  <summary>Actividad #7 - Rewrite</summary>
+  <summary>Actividad #7 - Módulo Rewrite</summary>
 
   - [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
   - [Creación de un .htacces](#crear-un-htacces-para-rewrite)
@@ -403,6 +403,8 @@ bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje
 <img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
 
 
+## Actividad #6
+
 ## Actividad #7 - Rewrite
 
 Este módulo de Apache habilita la capacidad de reescribir URLs mediante el uso de expresiones regulares
@@ -494,3 +496,22 @@ RewriteRule ^index\.html$ index.moz.html [L]
 Con esta sentencia cambiaremos el index predeterminado a uno específico para el navegador de Mozilla.
 
 <img src="./rsc/img/Rewrite3.png" alt="phpinfo" width="470"/>
+
+## Actividad #9 - Autenticación y Autorización
+
+- Autenticación es cualquier proceso por el cuál se verifica que uno es quien dice ser.
+- Autorización es cualquier proceso en el cuál cualquiera está permitido a estar donde se quiera, o tener información la cuál se quiera tener.
+
+### Creación de usuarios
+
+### Crear grupos de usuarios
+
+### Directorios privados
+
+#### Acceso público
+
+#### Acceso restringido
+
+### Directiva Satisfy
+
+### Restricción de acceso local
