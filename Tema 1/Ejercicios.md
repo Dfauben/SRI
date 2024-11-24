@@ -37,6 +37,18 @@
 
   </details>
 
+  <details>
+  <summary>Actividad #9 - Autenticación y Autorización</summary>
+
+  - [Creación de usuarios](#creación-de-usuarios)
+  - [Crear grupos de usaurios](#crear-grupos-de-usuarios)
+  - [Directorios Privados](#directorios-privados)
+  - [Directiva Satisfy](#directiva-satisfy)
+  - [Restricción de acceso local](#restricción-de-acceso-local)
+
+
+  </details>
+
 </details>
 
 - [Tema 2 - Placeholder](#Tema-X-Placeholder)
@@ -581,10 +593,8 @@ Nos quedaría tal que así:
 
 Ahora si ingresamos a la carpeta del dominio aparacerá lo siguiente:
 
-<div style="text-align: center">
-  <img src="./rsc/img/auth5.png" alt="phpinfo" width="670"/>
-</div>
 
+<img src="./rsc/img/auth5.png" alt="phpinfo" width="670"/>
 
 <br>
 <br>
