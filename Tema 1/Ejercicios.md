@@ -502,15 +502,126 @@ Con esta sentencia cambiaremos el index predeterminado a uno específico para el
 - Autenticación es cualquier proceso por el cuál se verifica que uno es quien dice ser.
 - Autorización es cualquier proceso en el cuál cualquiera está permitido a estar donde se quiera, o tener información la cuál se quiera tener.
 
+Para empezar a utilizar este módulo debemos habilatarlo, primero para ello escribimos en una terminal lo siguiente:
+````
+sudo a2enmod auth_basic
+````
+
+<br>
+<br>
+
 ### Creación de usuarios
+
+En la creación de usuarios se deberá definir primero un archivo donde se almacene la información relativa de los usuarios, entonces desde una terminal escribimos:
+````
+sudo htpasswd -c /etc/apache2/.htpasswd usuario
+````
+Luego de esto, se nos pedirá que escribamos la contraseña del usuario, y si queremos agregar más usuarios, simplemente escribimos el comando anterior pero sin el parámetro -c.
+
+<img src="./rsc/img/auth1.png" alt="phpinfo" width="470"/>
+
+<br>
+
+<img src="./rsc/img/auth2.png" alt="phpinfo" width="470"/>
+
+<br>
+
+<img src="./rsc/img/auth3.png" alt="phpinfo" width="470"/>
+
+<br>
+
 
 ### Crear grupos de usuarios
 
+Para la creación de grupos deberemos definir un archivo donde guardar los diferentes grupos. Para ello escribrimos en una terminal
+
+````
+sudo nano /etc/apache2/'nombre_archivo'
+````
+Podemos guardar el archivo en cualquier lugar, pero es recomendable guardarlos en /etc/apache2/
+
+<br>
+
+Dentro del archivo configuración añadimos lo siguiente:
+````
+'NombreGrupo': usuario1 usario2 usuario(n)
+````
+<img src="./rsc/img/auth6.png" alt="phpinfo" width="470"/>
+
 ### Directorios privados
 
-#### Acceso público
+Para hacer funcionar nuestro módulo deberemos definir qué carpetas tienen acceso restringido dentro de nuestro dominio, esto lo realizamos desde el archivo de configuración de nuestro dominio.
 
-#### Acceso restringido
+<br>
+
+#### Acceso a todo usuario válido
+
+Ahora nos tocará configurar el archivo de configuración del dominio deseado. Para ello escribimos en una terminal:
+````
+sudo nano /etc/apache2/sites-available/nombredominio.conf
+````
+<br>
+Dentro del archivo configuración añadimos lo siguiente:
+
+````
+<Directory 'Aquí añadimos la ruta de la carpeta restringida del dominio'>
+  AuthType Basic
+  AuthName "Nombre del dominio"
+  AuthUserFile /etc/apache2/"NombreArchivoUsuarios"
+  Require valid-user
+</Directory>
+````
+<br>
+
+Nos quedaría tal que así:
+
+<img src="./rsc/img/auth4.png" alt="phpinfo" width="470"/>
+
+<br>
+
+Ahora si ingresamos a la carpeta del dominio aparacerá lo siguiente:
+
+<img src="./rsc/img/auth5.png" alt="phpinfo" width="470"/>
+
+<br>
+<br>
+
+#### Acceso restringido por grupos
+
+Accedemos al archivo de configuración del dominio
+````
+sudo nano /etc/apache2/sites-available/nombredominio.conf
+````
+<br>
+Dentro del archivo configuración añadimos lo siguiente:
+
+````
+<Directory 'Aquí añadimos la ruta de la carpeta restringida del dominio'>
+  AuthType Basic
+  AuthName "Nombre del dominio"
+  AuthUserFile /etc/apache2/"NombreArchivoUsuarios"
+  AuthGroupFile /etc/apache2/"NombreArchivoGrupos"
+  Require group "NombreGrupo"
+</Directory>
+````
+
+<img src="./rsc/img/auth8.png" alt="phpinfo" width="470"/>
+
+<br>
+
+Es probable que necesitemos habilitar el módulo Authz_groupfile para el funcionamiento de esta función. Escribimos en una terminal lo siguiente:
+````
+sudo a2enmod authz_groupfile
+````
+
+<img src="./rsc/img/auth7.png" alt="phpinfo" width="470"/>
+
+<br>
+
+Comprobamos que los usuarios del grupo que están en el grupo definido pueden entrar y el resto no.
+
+<br>
+<br>
 
 ### Directiva Satisfy
 
