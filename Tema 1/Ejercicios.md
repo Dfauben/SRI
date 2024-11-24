@@ -518,15 +518,15 @@ sudo htpasswd -c /etc/apache2/.htpasswd usuario
 ````
 Luego de esto, se nos pedirá que escribamos la contraseña del usuario, y si queremos agregar más usuarios, simplemente escribimos el comando anterior pero sin el parámetro -c.
 
-<img src="./rsc/img/auth1.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth1.png" alt="phpinfo" width="570"/>
 
 <br>
 
-<img src="./rsc/img/auth2.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth2.png" alt="phpinfo" width="570"/>
 
 <br>
 
-<img src="./rsc/img/auth3.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth3.png" alt="phpinfo" width="570"/>
 
 <br>
 
@@ -546,7 +546,7 @@ Dentro del archivo configuración añadimos lo siguiente:
 ````
 'NombreGrupo': usuario1 usario2 usuario(n)
 ````
-<img src="./rsc/img/auth6.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth6.png" alt="phpinfo" width="570"/>
 
 ### Directorios privados
 
@@ -575,13 +575,13 @@ Dentro del archivo configuración añadimos lo siguiente:
 
 Nos quedaría tal que así:
 
-<img src="./rsc/img/auth4.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth4.png" alt="phpinfo" width="570"/>
 
 <br>
 
 Ahora si ingresamos a la carpeta del dominio aparacerá lo siguiente:
 
-<img src="./rsc/img/auth5.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth5.png" alt="phpinfo" width="670"/>
 
 <br>
 <br>
@@ -605,7 +605,7 @@ Dentro del archivo configuración añadimos lo siguiente:
 </Directory>
 ````
 
-<img src="./rsc/img/auth8.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth8.png" alt="phpinfo" width="570"/>
 
 <br>
 
@@ -614,7 +614,7 @@ Es probable que necesitemos habilitar el módulo Authz_groupfile para el funcion
 sudo a2enmod authz_groupfile
 ````
 
-<img src="./rsc/img/auth7.png" alt="phpinfo" width="470"/>
+<img src="./rsc/img/auth7.png" alt="phpinfo" width="570"/>
 
 <br>
 
