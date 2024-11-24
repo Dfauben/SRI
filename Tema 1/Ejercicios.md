@@ -2,45 +2,45 @@
 
 ## Indice
 
-- [Inicio ](../README.md)
-- [Tema 0 - Introducción ](../Tema%200/Ejercicios.md)
+- [Inicio](../README.md)
+- [Tema 0 - Introducción](../Tema%200/Ejercicios.md)
 
-+ <details><summary> Tema 1 - Servidores Web</summary>
+- <details><summary>Tema 1 - Servidores Web</summary>
 
-
-  + <details><summary>Actividad #1 - Instalación de un servidor web</summary>
+  <details>
+  <summary>Actividad #1</summary>
   
-    + [Instalación de Apache ](#instalación-de-apache-en-ubuntu)
-    + [Instalación de MySQL ](#instalación-de-mysql)
-    + [Instalación de PHP ](#instalación-de-php)
-    + [Creación de un Host Virtual para la página](#creación-de-un-host-virtual-para-la-página)
+  - [Instalación de Apache](#instalación-de-apache-en-ubuntu)
+  - [Instalación de MySQL](#instalación-de-mysql)
+  - [Instalación de PHP](#instalación-de-php)
+  - [Creación de un Host Virtual para la página](#creación-de-un-host-virtual-para-la-página)
 
   </details>
 
-  + <details><summary>Actividad #2 - Scripts</summary>
+  <details><summary>Actividad #2</summary>
 
-    + [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
-    + [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
-    + [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
+  - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
+  - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
+  - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
 
-</details>
+  </details>
 
-  + <details><summary>Actividad #7 - Rewrite</summary>
+  <details>
+  <summary>Actividad #7 - Rewrite</summary>
 
-    + [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
-    + [Creación de un .htacces](#crear-un-htacces-para-rewrite)
-    + [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
-    + [URL amigable](#url-amigable)
-    + [Redirección a página externa](#redireccionar-a-una-página-externa)
-    + [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
+  - [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
+  - [Creación de un .htacces](#crear-un-htacces-para-rewrite)
+  - [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
+  - [URL amigable](#url-amigable)
+  - [Redirección a página externa](#redireccionar-a-una-página-externa)
+  - [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
 
   </details>
 
 </details>
 
-- [Tema 2 - Placeholder ](#Tema-X-Placeholder)
-- [Tema 3 - Placeholder ](#Tema-X-Placeholder)
-
+- [Tema 2 - Placeholder](#Tema-X-Placeholder)
+- [Tema 3 - Placeholder](#Tema-X-Placeholder)
 ## Actividad #1
 
 ### La arquitectura Web es un modelo compuesto de tres capas, ¿cuáles son y cuál es  la función de cada una de ellas?
