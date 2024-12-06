@@ -73,26 +73,39 @@ exit
 Ejecutamos los siguientes comandos:
 
 `````
-sudo install php
+sudo apt install -y php8.1-cli php8.1-fpm php8.1-mysql
 `````
 
 ### Instalamos Wordpress
 
-1. Creamos la carpteta contenedora para Wordpress
+1. Descargamos el archivo de instalación de Wordpress:
 
 ````
-sudo mkdir -p /var/www/html
+wget https://es.wordpress.org/latest.zip
 ````
 
-2. Cambiamos los permisos de la carpeta
+2. Extraemos los archivos
 
 ````
-sudo chown www-data: /var/www/html
-````
-3. Descargamos los datos necesarios para Wordpress en dicha carpeta
-
+sudo unzip latest.zip
 ````
 
+Si necesitamos el comando unzip lo podemos instalar con el siguiente comando:
+
+````
+sudo apt install unzip
+````
+
+3. Movemos los contenidos de Wordpress a la carpeta del dominio
+
+````
+sudo mv wordpress/* /var/www/html/
+````
+
+4. Cambiamos los permisos de la carpeta
+
+````
+sudo chown -R www-data:www-data /var/www/html/*
 ````
 
 
@@ -209,31 +222,25 @@ quit
 ### Configurar la conexión entre Wordpress y la base de datos
 
 <br>
-Copiamos la 
+
+Copiamos la configuracion por defecto de wordpress en el archivo wp-config-sample.php a wp-config.php
 
 ````
 sudo -u www-data cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 ````
 
-````
-sudo -u www-data sed -i 's/database_here/wordpress/'  /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i 's/username_here/wordpress/'  /srv/www/wordpress/wp-config.php
-sudo -u www-data sed -i 's/password_here/usuario/'  /srv/www/wordpress/wp-config.php
-````
+Modificamos el archivo de configuración de WordPress para que se conecte a la base de datos que creamos anteriormente.
 
 ````
 sudo -u www-data nano /srv/www/wordpress/wp-config.php
 ````
 
+Dentro del documento , debemos cambiar los siguientes valores por aquellos que definimos en nuestra base de datos:
+
 ````
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define( 'DB_NAME',          'Nombre_Base_Datos' );
+define( 'DB_USER',          'Nombre_Usuario' );
+define( 'DB_PASSWORD',      'Contraseña' );
 ````
 
 ### Configuración de Wordpress
