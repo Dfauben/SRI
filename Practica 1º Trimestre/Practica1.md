@@ -95,11 +95,12 @@ sudo chown www-data: /var/www/html
 
 ````
 
-<br>
 
 <br>
 
-### Creación y modificación de un archivo de congifuración para Wordpress
+<br>
+
+### Creación y modificación de un archivo de configuración para Wordpress
 
 1. Creamos el archivo de configuración
 
@@ -235,6 +236,30 @@ define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
 ````
 
+### Configuración de Wordpress
+
+Ingresamos a nuestro dominio y comenzamos la configuración básica de Wordpress.
+Seleccionamos el idioma.
+
+<img src="../Practica 1º Trimestre/rsc/img/wordpress.png" alt="index" width="570"/>
+
+Continuamos con la configuración, añadimos nombre a nuestro sitio, correo electrónico y contraseña de administrador.
+
+<img src="../Practica 1º Trimestre/rsc/img/wordpress3.png" alt="index" width="570"/>
+
+Habremos finalizado la configuración básica de Wordpress.
+
+<img src="../Practica 1º Trimestre/rsc/img/wordpress4.png" alt="index" width="570"/>
+
+Accedemos a la página de inicio de Wordpress e ingresamos con nuestras credenciales.
+
+<img src="../Practica 1º Trimestre/rsc/img/wordpress5.png" alt="index" width="570"/>
+
+Finalmente comprobamos el correcto funcionamiento de Wordpress.
+
+<img src="../Practica 1º Trimestre/rsc/img/wordpress6.png" alt="index" width="570"/>
+
+<br>
 
 ## Activación del módulo 'WSGI' para apliaciones Python
 
