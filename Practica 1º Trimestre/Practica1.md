@@ -268,12 +268,236 @@ Finalmente comprobamos el correcto funcionamiento de Wordpress.
 
 <br>
 
-## Activación del módulo 'WSGI' para apliaciones Python
+## Activación del módulo 'WSGI' para aplicaciones Python
+
+1. Instalamos Python:
+````
+sudo apt install python3 libexpat1 -y
+````
+
+2. Instalamos el módulo WSGI
+````
+sudo apt install libapache2-mod-wsgi-py3 -y
+````
+
 
 ## Utilizando aplicaciones Python
 
-## Medidas de seguridad en el acceso: Autenticación
+1. Probamos el módulo con un script de prueba:
+
+````
+sudo nano /var/www/html/wsgi_test.py
+````
+
+2. Agregamos el siguiente código al archivo wsgi_test.py:
+````Python
+def application(environ, start_response):
+    status = '200 OK'
+    output = b'Hello !\n'
+
+    response_headers = [
+        ('Content-type', 'text/plain'),
+        ('Content-Length', str(len(output)))
+    ]
+
+    start_response(status, response_headers)
+    return [output]
+````
+
+3. Cambiamos el dueño y permisos del archivo
+
+````
+sudo chown www-data:www-data /var/www/html/wsgitest.py
+sudo chmod 775 /var/www/html/wsgitest.py
+````
+
+4. En el archivo de configuración de nuestro VirtualHost añadimos:
+````
+WSGIScriptAlias / /var/www/html/wsgitest.py
+````
+
+5.  Ingresamos al dominio añadiendo al  final /wsgi
+
+<img src="../Practica 1º Trimestre/rsc/img/pyrhon.png" alt="index" width="570"/>
+
+
+## Medidas de seguridad al acceso de la aplicación Python
+
+1. Utilizaremos el módulo auth_basic, para empezar a utilizar este módulo debemos habilitarlo, primero para ello escribimos en una terminal lo siguiente:
+````
+sudo a2enmod auth_basic
+````
+
+2. Definimos primero un archivo donde se almacene la información relativa de los usuarios, entonces desde una terminal escribimos:
+
+````
+sudo htpasswd -c /etc/apache2/.htpasswd usuario
+````
+
+3. Ingresamos al archivo de configuración del VirtualHost:
+````
+sudo nano /etc/apache2/sites-available/nombre-dominio.conf
+````
+
+4. Agregamos la siguiente línea al archivo de configuración:
+````
+<Location /wsgi>
+  AuthType Basic
+  AuthName "Nombre_Opcional"
+  AuthUserFile /etc/apache2/.htpsswd
+  Require valid-user
+</Location>
+````
+
+5. Comprobamos que no podemos acceder al módulo WSGI
+
+<img src="../Practica 1º Trimestre/rsc/img/auth.png" alt="index" width="570"/>
 
 ## Instalación y configuración de AWSTAT
 
+1. Instalamos AWSTAT mediante el siguiente comando:
+````
+sudo apt-get install awstats
+````
+
+2. Habilitamos el módulo CGI:
+````
+sudo a2enmod cgi
+````
+
+3. Reinizamos Apache:
+````
+sudo service apache2 restart
+````
+
+4. Duplicamos el archivo de configuración de AWSTAT:
+````
+sudo cp /etc/awstats/awstats.conf /etc/awstats/Nombre-Dominio.conf
+````
+
+5. Editamos el archivo de configuración de AWSTAT:
+````
+sudo nano /etc/awstats/Nombre-Dominio.conf
+````
+
+6. Agregamos la siguiente línea al archivo de configuración:
+````
+# Change to Apache log file, by default it's /var/log/apache2/access.log
+LogFile="/var/log/apache2/access.log"
+
+# Change to the website domain name
+SiteDomain="domain-example.com"
+HostAliases="www.domain-example localhost 127.0.0.1"
+
+# When this parameter is set to 1, AwStats adds a button on report page to allow to "update" statistics from a web browser
+AllowToUpdateStatsFromBrowser=1
+````
+
+7. Generamos estadisticas de AWSTAT:
+
+````
+sudo /usr/lib/cgi-bin/awstats.pl -config=Nombre-Dominio -update
+````
+
+8. Copiamos el contenido de la carpeta cgi-bin a la carpeta por defecto de Apache:
+````
+cp -r /usr/lib/cgi-bin /var/www/html/
+chown www-data:www-data /var/www/html/cgi-bin/
+chmod -R 755 /var/www/html/cgi-bin/
+````
+
 ## Instalación de un segundo servidor
+
+1. Instalamos Nginx
+````
+sudo apt-get install nginx
+````
+
+2. Ajustamos el firewall
+````
+sudo ufw allow 'Nginx HTTP'
+````
+
+3. Comprobamos que funciona
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx.png" alt="index" width="570"/>
+
+4. Creamos una carpeta para el sitio web
+
+````
+sudo mkdir /var/www/server2/html
+````
+
+5. Creamos el archivo de configuracion del dominio
+````
+sudo nano /etc/nginx/sites-available/Nuevo-Dominio
+````
+
+6. Agregamos lo siguiente:
+````
+server {
+        listen 8080;
+        listen [::]:8080;
+
+        root /var/www/server2/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name server2.centro.intranet www.server2.centro.intranet;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+````
+
+7. Habilitamos el sitio web
+````
+sudo ln -s /etc/nginx/sites-available/Nuevo-Dominio /etc/nginx/sites-enabled/
+````
+
+8. Reiniciamos el servicio de Nginx
+````
+sudo service nginx restart
+````
+
+9. Comprobamos que funciona
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx2.png" alt="index" width="570"/>
+
+### Instalación PHP y PHPmyAdmin
+
+1.  Instalamos PHP
+````
+sudo apt-get install php-fpm -y
+````
+
+2. Instalamos MySQLServer
+````
+sudo apt-get install mysql-server -y
+````
+
+3. Configuramos MySQLServer:
+
+````
+sudo mysql
+````
+````
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
+````
+````
+quit
+````
+
+3. Instalamos PHPmyAdmin
+````
+sudo apt-get install phpmyadmin
+````
+
+4. Configuramos PHPmyAdmin
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx3.png" alt="index" width="570"/>
+
+5. Incluimos en la carpeta de nuestro dominio los archivos de PHPmyAdmin:
+````
+sudo ln -s /usr/share/phpmyadmin /var/www/server2/
+````
