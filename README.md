@@ -1,5 +1,7 @@
 <img src=".\Logos\all.png" alt="logos" width="600"/>
 
+<img src="/SREI/Practica 1º Trimestre/rsc/img/banner.png">
+
 <br>
 
 # Servicios de Red e Internet
