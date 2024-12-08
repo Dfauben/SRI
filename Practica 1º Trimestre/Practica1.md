@@ -1,7 +1,7 @@
 # Práctica Servidores Web - 1º Trimestre
 
 
-<img src="../Practica 1º Trimestre/rsc/img/icon.png" alt="index" width="650"/>
+<img src="../Practica 1º Trimestre/rsc/img/icon.png" alt="index" width="550"/>
 
 ## Indice
 
