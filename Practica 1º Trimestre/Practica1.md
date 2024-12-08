@@ -7,9 +7,9 @@
 - [Tema 1 - Servidores Web ](../../SREI/Tema%201/Ejercicios.md)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
-- <details><summary>Prácticas</summary>
+- <details><summary>Trabajos prácticos</summary>
 
-    <details><summary>Practica 1</summary>
+    <details><summary>Servidores Web</summary>
 
     - [Instalación del servidor web Apache](#instalación-del-servidor-web-apache)
     - [Instalación de MySQL](#instalación-de-mysql)
