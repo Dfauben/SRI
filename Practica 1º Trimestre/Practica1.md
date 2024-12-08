@@ -446,12 +446,12 @@ sudo ufw allow 'Nginx HTTP'
 4. Creamos una carpeta para el sitio web
 
 ````
-sudo mkdir /var/www/server2/html
+sudo mkdir /var/www/server2
 ````
 
 5. Creamos el archivo de configuracion del dominio
 ````
-sudo nano /etc/nginx/sites-available/Nuevo-Dominio
+sudo nano /etc/nginx/sites-available/servidor2.centro.intranet
 ````
 
 6. Agregamos lo siguiente:
@@ -487,9 +487,14 @@ server {
 
 ````
 
+7. Configuramos el archivo hosts:
+````
+111.111.111.111 servidor2.centro.intranet
+````
+
 7. Habilitamos el sitio web
 ````
-sudo ln -s /etc/nginx/sites-available/Nuevo-Dominio /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/servidor2.centro.intranet /etc/nginx/sites-enabled/
 ````
 
 8. Reiniciamos el servicio de Nginx
@@ -499,7 +504,7 @@ sudo service nginx restart
 
 9. Comprobamos que funciona
 
-<img src="../Practica 1º Trimestre/rsc/img/nginx2.png" alt="index" width="570"/>
+<img src="../Practica 1º Trimestre/rsc/img/nginxprueba.png" alt="index" width="570"/>
 
 <br>
 
@@ -530,6 +535,9 @@ FLUSH PRIVILEGES;
 EXIT;
 ````
 
+<br>
+<br>
+
 ### Instalación PHP
 
 1. Instalamos PHP y sus dependencias:
@@ -552,18 +560,37 @@ cgi.fix_pathinfo=0
 sudo service php8.1-fpm restart
 ````
 
+<br>
+<br>
+
 ### Instalación phpMyAdmin
 
-3. Instalamos PHPmyAdmin
+1. Instalamos PHPmyAdmin
 ````
 sudo apt-get install phpmyadmin
 ````
 
-4. Configuramos PHPmyAdmin, seleccionamos apache2:
+<br>
+
+2. Configuramos PHPmyAdmin, seleccionamos apache2:
 
 <img src="../Practica 1º Trimestre/rsc/img/nginx3.png" alt="index" width="570"/>
 
-5. Incluimos en la carpeta de nuestro dominio los archivos de PHPmyAdmin:
+<br>
+
+Posteriormente ingresamos la contraseña que habriamos establecido en el paso de instalación de MySQL
+
+<br>
+
+3. Incluimos en la carpeta de nuestro dominio los archivos de PHPmyAdmin:
 ````
 sudo ln -s /usr/share/phpmyadmin /var/www/server2/
 ````
+
+<br>
+
+4. Comprobamos que funciona:
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx_phpmyadmin.png" alt="index" width="570"/>
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx_phpmyadmin2.png" alt="index" width="570"/>
