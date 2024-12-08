@@ -7,8 +7,49 @@
 - [Tema 1 - Servidores Web ](../../SREI/Tema%201/Ejercicios.md)
 - [Tema 2 - Placeholder ](#Tema-X-Placeholder)
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
-- [Prácticas ](contenidos.md)
-    - [1º Trimestre - Servidores Web ](Practica1.md)
+- <details><summary>Prácticas</summary>
+
+
+
+  - [Instalación del servidor web Apache](#instalación-del-servidor-web-apache)
+  - [Instalación de MySQL](#instalación-de-mysql)
+
+  <details><summary>Instalación y configuración Wordpress</summary>
+
+  - [Instalamos las dependencias para Wordpress](#instalamos-las-dependencias-para-wordpress)
+  - [Instalación de Wordpress](#instalamos-wordpress)
+  - [Creación y modificación de un archivo de configuración para Wordpress](#creación-y-modificación-de-un-archivo-de-configuración-para-wordpress)
+  - [Configuración de la base de datos](#configuración-de-la-base-de-datos)
+  - [Configurar la conexión entre Wordpress y la base de datos](#configurar-la-conexión-entre-wordpress-y-la-base-de-datos)
+
+  </details>
+
+  <details>
+  <summary>Módulo 'WSGI' para aplicaciones Python</summary>
+
+  - [Activación del módulo 'WSGI' para aplicaciones Python](#activación-del-módulo-wsgi-para-aplicaciones-python)
+  - [Utilizando aplicaciones Python](#utilizando-aplicaciones-python)
+  - [Medidas de seguridad al acceso de la aplicación Python](#medidas-de-seguridad-al-acceso-de-la-aplicación-python)
+
+  </details>
+
+  <br>
+
+  - [Instalación y configuración de AWSTAT](#instalación-y-configuración-de-awstat)
+
+  <details>
+  <summary>Segundo servidor web con Nginx</summary>
+
+  - [Instalación de Nginx](#instalación-de-un-segundo-servidor)
+  - [Instalacion MySQL](#instalación-mysql)
+  - [Instalación PHP y dependencias](#instalación-php)
+  - [Instalación phpMyAdmin](#instalación-phpmyadmin)
+
+
+  </details>
+
+</details>
+
 
 ## Instalación del servidor web Apache
 
@@ -243,6 +284,9 @@ define( 'DB_USER',          'Nombre_Usuario' );
 define( 'DB_PASSWORD',      'Contraseña' );
 ````
 
+<br>
+<br>
+
 ### Configuración de Wordpress
 
 Ingresamos a nuestro dominio y comenzamos la configuración básica de Wordpress.
@@ -280,6 +324,8 @@ sudo apt install python3 libexpat1 -y
 sudo apt install libapache2-mod-wsgi-py3 -y
 ````
 
+<br>
+<br>
 
 ## Utilizando aplicaciones Python
 
@@ -320,6 +366,8 @@ WSGIScriptAlias / /var/www/html/wsgitest.py
 
 <img src="../Practica 1º Trimestre/rsc/img/pyrhon.png" alt="index" width="570"/>
 
+<br>
+<br>
 
 ## Medidas de seguridad al acceso de la aplicación Python
 
@@ -372,7 +420,7 @@ sudo a2enmod cgi alias
 
 <br>
 
-3. Reinizamos Apache:
+3. Reiniciamos Apache:
 ````
 sudo service apache2 restart
 ````
