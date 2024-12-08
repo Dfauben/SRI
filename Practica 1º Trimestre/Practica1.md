@@ -1,5 +1,8 @@
 # Práctica Servidores Web - 1º Trimestre
 
+
+<img src="../Tema 1/rsc/img/icon.png" alt="index" width="870"/>
+
 ## Indice
 
 - [Inicio ](../README.md)
