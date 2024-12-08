@@ -1,6 +1,6 @@
 <img src=".\Logos\all.png" alt="logos" width="600"/>
 
-<img src="/SREI/Practica 1º Trimestre/rsc/img/banner.png">
+<img src="./Practica 1º Trimestre/rsc/img/banner.png">
 
 <br>
 
