@@ -457,18 +457,28 @@ sudo nano /etc/nginx/sites-available/Nuevo-Dominio
 6. Agregamos lo siguiente:
 ````
 server {
-        listen 8080;
-        listen [::]:8080;
+    listen 8080;
+    server_name servidor2.centro.intranet;
 
-        root /var/www/server2/html;
-        index index.html index.htm index.nginx-debian.html;
+    root /var/www/servidor2.centro.intranet;
+    index index.html index.php;
 
-        server_name server2.centro.intranet www.server2.centro.intranet;
+    location / {
+        try_files $uri $uri/ =404;
+    }
 
-        location / {
-                try_files $uri $uri/ =404;
-        }
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock; # Ajusta según tu versión de PHP
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
 }
+
 ````
 
 7. Habilitamos el sitio web
@@ -487,36 +497,63 @@ sudo service nginx restart
 
 <br>
 
-### Instalación PHP y PHPmyAdmin
+### Instalación MySQL
 
-1.  Instalamos PHP
-````
-sudo apt-get install php-fpm -y
-````
-
-2. Instalamos MySQLServer
+1.  Instalamos MySQL
 ````
 sudo apt-get install mysql-server -y
 ````
 
-3. Configuramos MySQLServer:
+2. Configuramos MySQLServer:
 
 ````
-sudo mysql
+sudo mysql_secure_installation
+````
+
+<img src="../Practica 1º Trimestre/rsc/img/sql.png" alt="index" width="570"/>
+
+3. Creamos el usuario phpmyadmin para la posterior instalación de phpmyadmin:
+
+````
+sudo mysql -u root -p
 ````
 ````
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
+CREATE USER 'phpmyadmin'@'localhost' IDENTIFIED BY 'Contraseña';
+GRANT ALL PRIVILEGES ON *.* TO 'phpmyadmin'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
+````
+
+### Instalación PHP
+
+1. Instalamos PHP y sus dependencias:
+````
+sudo apt install php-fpm php-mysql php-mbstring php-zip php-gd php-json php-curl -y
+````
+
+2. Configurar PHP-FPM para evitar problemas con Nginx:
+````
+sudo nano /etc/php/8.1/fpm/php.ini
 ````
 ````
-quit
+cgi.fix_pathinfo=0
 ````
+
+<img src="../Practica 1º Trimestre/rsc/img/nginx_php.png" alt="index" width="570"/>
+
+3. Reiniciamos el servicio de PHP-FPM:
+````
+sudo service php8.1-fpm restart
+````
+
+### Instalación phpMyAdmin
 
 3. Instalamos PHPmyAdmin
 ````
 sudo apt-get install phpmyadmin
 ````
 
-4. Configuramos PHPmyAdmin
+4. Configuramos PHPmyAdmin, seleccionamos apache2:
 
 <img src="../Practica 1º Trimestre/rsc/img/nginx3.png" alt="index" width="570"/>
 
