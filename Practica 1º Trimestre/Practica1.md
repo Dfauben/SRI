@@ -353,6 +353,9 @@ sudo nano /etc/apache2/sites-available/nombre-dominio.conf
 
 <img src="../Practica 1º Trimestre/rsc/img/auth.png" alt="index" width="570"/>
 
+<br>
+<br>
+
 ## Instalación y configuración de AWSTAT
 
 1. Instalamos AWSTAT mediante el siguiente comando:
@@ -360,51 +363,69 @@ sudo nano /etc/apache2/sites-available/nombre-dominio.conf
 sudo apt-get install awstats
 ````
 
+<br>
+
 2. Habilitamos el módulo CGI:
 ````
-sudo a2enmod cgi
+sudo a2enmod cgi alias
 ````
+
+<br>
 
 3. Reinizamos Apache:
 ````
 sudo service apache2 restart
 ````
 
+<br>
+
 4. Duplicamos el archivo de configuración de AWSTAT:
 ````
-sudo cp /etc/awstats/awstats.conf /etc/awstats/Nombre-Dominio.conf
+sudo cp /etc/awstats/awstats.conf /etc/awstats/awstats.Nombre-Dominio.conf
 ````
+
+<br>
 
 5. Editamos el archivo de configuración de AWSTAT:
 ````
-sudo nano /etc/awstats/Nombre-Dominio.conf
+sudo nano /etc/awstats/awstats.Nombre-Dominio.conf
 ````
-
-6. Agregamos la siguiente línea al archivo de configuración:
 ````
-# Change to Apache log file, by default it's /var/log/apache2/access.log
 LogFile="/var/log/apache2/access.log"
-
-# Change to the website domain name
-SiteDomain="domain-example.com"
-HostAliases="www.domain-example localhost 127.0.0.1"
-
-# When this parameter is set to 1, AwStats adds a button on report page to allow to "update" statistics from a web browser
-AllowToUpdateStatsFromBrowser=1
+SiteDomain="Dominio.com"
+HostAliases="www.Dominio.com localhost 127.0.0.1"
 ````
 
-7. Generamos estadisticas de AWSTAT:
+<br>
+
+6. Generamos estadisticas de AWSTAT:
 
 ````
 sudo /usr/lib/cgi-bin/awstats.pl -config=Nombre-Dominio -update
 ````
 
-8. Copiamos el contenido de la carpeta cgi-bin a la carpeta por defecto de Apache:
+<br>
+
+7. Cambiamos los permisos del log generado:
 ````
-cp -r /usr/lib/cgi-bin /var/www/html/
-chown www-data:www-data /var/www/html/cgi-bin/
-chmod -R 755 /var/www/html/cgi-bin/
+sudo chmod o+r /var/log/apache2/acces.log
 ````
+
+<br>
+
+8. Generamos un index para nuestra pagina de estadisticas AWSTATS:
+````
+sudo /usr/lib/cgi-bin/awstats.pl -config=Dominio.com -output > /var/www/html/index.html
+````
+
+<br>
+
+9. Visualizamos en el navegador
+
+<img src="../Practica 1º Trimestre/rsc/img/awstats.png" alt="index" width="570"/>
+
+<br>
+<br>
 
 ## Instalación de un segundo servidor
 
@@ -463,6 +484,8 @@ sudo service nginx restart
 9. Comprobamos que funciona
 
 <img src="../Practica 1º Trimestre/rsc/img/nginx2.png" alt="index" width="570"/>
+
+<br>
 
 ### Instalación PHP y PHPmyAdmin
 
