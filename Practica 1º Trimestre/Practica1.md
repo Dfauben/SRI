@@ -9,41 +9,42 @@
 - [Tema 3 - Placeholder ](#Tema-X-Placeholder)
 - <details><summary>Prácticas</summary>
 
+    <details><summary>Practica 1</summary>
+
+    - [Instalación del servidor web Apache](#instalación-del-servidor-web-apache)
+    - [Instalación de MySQL](#instalación-de-mysql)
+
+        <details><summary>Instalación y configuración Wordpress</summary>
+
+        - [Instalamos las dependencias para Wordpress](#instalamos-las-dependencias-para-wordpress)
+        - [Instalación de Wordpress](#instalamos-wordpress)
+        - [Creación y modificación de un archivo de configuración para Wordpress](#creación-y-modificación-de-un-archivo-de-configuración-para-wordpress)
+        - [Configuración de la base de datos](#configuración-de-la-base-de-datos)
+        - [Configurar la conexión entre Wordpress y la base de datos](#configurar-la-conexión-entre-wordpress-y-la-base-de-datos)
+
+        </details>
+
+        <details>
+        <summary>Módulo 'WSGI' para aplicaciones Python</summary>
+
+        - [Activación del módulo 'WSGI' para aplicaciones Python](#activación-del-módulo-wsgi-para-aplicaciones-python)
+        - [Utilizando aplicaciones Python](#utilizando-aplicaciones-python)
+        - [Medidas de seguridad al acceso de la aplicación Python](#medidas-de-seguridad-al-acceso-de-la-aplicación-python)
+
+        </details>
+
+    - [Instalación y configuración de AWSTAT](#instalación-y-configuración-de-awstat)
+
+        <details>
+        <summary>Segundo servidor web con Nginx</summary>
+
+        - [Instalación de Nginx](#instalación-de-un-segundo-servidor)
+        - [Instalacion MySQL](#instalación-mysql)
+        - [Instalación PHP y dependencias](#instalación-php)
+        - [Instalación phpMyAdmin](#instalación-phpmyadmin)
 
 
-  - [Instalación del servidor web Apache](#instalación-del-servidor-web-apache)
-  - [Instalación de MySQL](#instalación-de-mysql)
-
-    <details><summary>Instalación y configuración Wordpress</summary>
-
-    - [Instalamos las dependencias para Wordpress](#instalamos-las-dependencias-para-wordpress)
-    - [Instalación de Wordpress](#instalamos-wordpress)
-    - [Creación y modificación de un archivo de configuración para Wordpress](#creación-y-modificación-de-un-archivo-de-configuración-para-wordpress)
-    - [Configuración de la base de datos](#configuración-de-la-base-de-datos)
-    - [Configurar la conexión entre Wordpress y la base de datos](#configurar-la-conexión-entre-wordpress-y-la-base-de-datos)
-
-    </details>
-
-    <details>
-    <summary>Módulo 'WSGI' para aplicaciones Python</summary>
-
-    - [Activación del módulo 'WSGI' para aplicaciones Python](#activación-del-módulo-wsgi-para-aplicaciones-python)
-    - [Utilizando aplicaciones Python](#utilizando-aplicaciones-python)
-    - [Medidas de seguridad al acceso de la aplicación Python](#medidas-de-seguridad-al-acceso-de-la-aplicación-python)
-
-    </details>
-
-  - [Instalación y configuración de AWSTAT](#instalación-y-configuración-de-awstat)
-
-    <details>
-    <summary>Segundo servidor web con Nginx</summary>
-
-    - [Instalación de Nginx](#instalación-de-un-segundo-servidor)
-    - [Instalacion MySQL](#instalación-mysql)
-    - [Instalación PHP y dependencias](#instalación-php)
-    - [Instalación phpMyAdmin](#instalación-phpmyadmin)
-
-
+        </details>
     </details>
 
 </details>
