@@ -639,3 +639,238 @@ Comprobamos que los usuarios del grupo que están en el grupo definido pueden en
 ### Directiva Satisfy
 
 ### Restricción de acceso local
+
+<br>
+<br>
+
+
+## Actividad #9.5 - Autenticación MySQL
+
+### Instalación y configuración LAMP Server
+
+1. Instalamos las dependencias:
+````
+apt-get install apache2 php7.0 libaprutil1-dbd-mysql -y
+````
+
+2. Instalamos MariaDB:
+````
+apt-get install mariadb-server mariadb-client -y
+````
+
+<img src="./rsc/img/mariadb_conf.png" alt="" width="770"/>
+
+3. Iniciamos sesión en MySQL:
+````
+mysql -u root
+````
+
+4. Creamos un usuario y una base de datos:
+
+````
+MariaDB [(none)]>create database defaultsite_db;
+````
+
+````
+MariaDB [(none)]>GRANT SELECT, INSERT, UPDATE, DELETE ON defaultsite_db.* TO 'defaultsite_admin'@'localhost.localdomain' IDENTIFIED BY 'password';
+````
+
+5. Limpiamos los privilegios:
+
+````
+MariaDB [(none)]>flush privileges;
+````
+
+6. Creamos la tabla donde guardaremos las credenciales:
+
+````
+MariaDB [(none)]>use defaultsite_db;
+````
+
+````
+MariaDB [defaultsite_db]> create table mysql_auth ( username varchar(191) not null, passwd varchar(191), groups varchar(191), primary key (username) );
+````
+
+7. Insertamos un usuario y contraseña en la tabla:
+
+````
+htpasswd -bns siteuser siteuser
+````
+
+````
+MariaDB [defaultsite_db]> INSERT INTO `mysql_auth` (`username`, `passwd`, `groups`) VALUES('siteuser', '{SHA}tk7HEH6Wo7SKT6+3FHCgiGnJ6dA=', 'sitegroup');
+````
+
+<img src="./rsc/img/mariadb_auth.png" alt="" width="870"/>
+
+<br>
+
+8. Salimos de MySQL:
+
+````
+MariaDB [defaultsite_db]>exit;
+````
+
+<br>
+<br>
+
+### Configuración en Apache
+
+1.  Habilitamos los modulos necesarios:
+
+````
+a2enmod dbd
+````
+
+````
+a2enmod authn_dbd
+````
+
+````
+a2enmod socache_shmcb
+````
+
+````
+a2enmod authn_socache
+````
+
+<br>
+
+2.  Creamos un archivo de configuración para Apache:
+
+````
+mkdir /var/www/html/protectddir
+````
+
+````
+chown -R www-data:www-data /var/www/html/protecteddir
+````
+
+<br>
+
+3. Configuramos el archivo de configuración de Apache:
+
+````
+nano /etc/apache2/sites-available/000-default.conf
+````
+
+Añadimos al final del archivo:
+
+````
+ DBDriver mysql 
+ DBDParams "dbname=defaultsite_db user=defaultsite_admin pass=password"
+ 
+ DBDMin 4 
+ DBDKeep 8 
+ DBDMax 20 
+ DBDExptime 300
+ 
+ <Directory "/var/www/html/protecteddir"> 
+ # mod_authn_core and mod_auth_basic configuration 
+ # for mod_authn_dbd 
+ AuthType Basic 
+ AuthName "My Server"
+ 
+ # To cache credentials, put socache ahead of dbd here 
+ AuthBasicProvider socache dbd
+ 
+ # Also required for caching: tell the cache to cache dbd lookups! 
+ AuthnCacheProvideFor dbd 
+ AuthnCacheContext my-server
+ 
+ # mod_authz_core configuration 
+ Require valid-user
+ 
+ # mod_authn_dbd SQL query to authenticate a user 
+ AuthDBDUserPWQuery "SELECT passwd FROM mysql_auth WHERE username = %s" 
+ </Directory>
+````
+
+<br>
+
+4. Reiniciamos el servicio Apache:
+
+````
+systemctl restart apache2
+````
+
+<br>
+<br>
+
+### Comprobación de la autenticación básica con MySQL:
+
+1. Entramos a nuestro dominio y al directorio protegido:
+````
+http://localhost/protecteddir
+````
+
+<img src="./rsc/img/sqlpass.png" alt="phpinfo" width="570"/>
+
+2. Introducimos usuario y contraseña de MySQL y observamos que entramos:
+
+<img src="./rsc/img/sqlauth.png" alt="phpinfo" width="570"/>
+
+<br>
+<br>
+
+
+## Actividad #10 - Crear un certificado autofirmado y activar el módulo SSL
+
+1. Habilitamos el módulo SSL:
+````
+sudo a2enmod ssl
+````
+
+2. Reiniciamos el servicio Apache:
+````
+sudo systemctl restart apache2
+````
+
+3. Creamos un certificado autofirmado:
+````
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+````
+
+<img src="./rsc/img/sslcert.png" alt="phpinfo" width="870"/>
+
+
+4. Configuramos el archivo de configuración de Apache para utilizar el certificado autofirmado:
+
+````
+sudo nano /etc/apache2/sites-available/domain.conf
+````
+
+5. Agregamos la siguiente configuración al archivo:
+
+````
+<VirtualHost *:443>
+
+  ServerName Domain_Name
+  DocumentRoot /var/www/html
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
+  SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+
+  ...
+
+</VirtualHost>
+````
+
+<img src="./rsc/img/sslcert2.png" alt="phpinfo" width="670"/>
+
+6. Reiniciamos el servicio Apache:
+````
+sudo systemctl restart apache2
+````
+
+7. Verificamos que los puertos necesarios estén abiertos en el firewall:
+
+````
+sudo ufw allow "Apache Full"
+````
+
+8. Accedemos al sitio web
+
+<img src="./rsc/img/sslon.png" alt="phpinfo" width="670"/>
+
+<img src="./rsc/img/sslfinal.png" alt="phpinfo" width="670"/>

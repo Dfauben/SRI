@@ -60,7 +60,7 @@
 1. Abrimos una terminal
 
 2. Actualizamos los paquetes instalados
-`````
+````
 sudo apt update
 `````
 3. Instalamos las nuevas versiones
