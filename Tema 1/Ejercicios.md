@@ -871,6 +871,6 @@ sudo ufw allow "Apache Full"
 
 8. Accedemos al sitio web
 
-<img src="./rsc/img/sslon.png" alt="phpinfo" width="670"/>
+<img src="./rsc/img/SSLON.png" alt="phpinfo" width="670"/>
 
 <img src="./rsc/img/sslfinal.png" alt="phpinfo" width="670"/>
