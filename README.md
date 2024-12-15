@@ -16,7 +16,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 
 ## Contenidos del repositorio
 
-### Tema 0 Introducción
+<img src="./Tema0.png">
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
@@ -26,7 +26,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 4 | [Uso del comando cURL.](./Tema%200/Ejercicios.md#ejercicio-4---usando-curl-) |
 | 5 | [Práctica donde se prueban diferentes formas de crear servidores web.](./Tema%200/Ejercicios.md#ejercicio-5---práctica-a-servidor-web-) |
 
-### Tema 1 Servidores Web
+<img src="./Tema0.png">
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
@@ -45,7 +45,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 3 |   |
 | 4 |   |
 
-### Prácticas
+<img src="./Tema0.png">
 
 | Nº Práctica | Nombre  |
 |:-:|:-:|
