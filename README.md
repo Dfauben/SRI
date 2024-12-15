@@ -16,7 +16,11 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 
 ## Contenidos del repositorio
 
+<br>
+
 <img src="./Tema0.png">
+
+<br>
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
@@ -26,7 +30,12 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 4 | [Uso del comando cURL.](./Tema%200/Ejercicios.md#ejercicio-4---usando-curl-) |
 | 5 | [Práctica donde se prueban diferentes formas de crear servidores web.](./Tema%200/Ejercicios.md#ejercicio-5---práctica-a-servidor-web-) |
 
+<br>
+<br>
+
 <img src="./Tema1.png">
+
+<br>
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
@@ -36,16 +45,13 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 7 | [Uso del módulo Rewrite de Apache permitiendo redirecciones](./Tema%201/Ejercicios.md#habilitando-el-módulo-rewrite)  |
 | 9 | [Módulo de Autenticación en Apache (configuración)](./Tema%201/Ejercicios.md#creación-de-usuarios) |
 | 10 | [Certificados autofirmados SSL](./Tema%201/Ejercicios.md#)  |
-### Tema X Placeholder
 
-| Nº Ejercicio | Descripción  |
-|:-:|:-:|
-| 1 |   |
-| 2 |   |
-| 3 |   |
-| 4 |   |
+<br>
+<br>
 
 <img src="./PR.png">
+
+<br>
 
 | Nº Práctica | Nombre  |
 |:-:|:-:|
