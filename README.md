@@ -1,11 +1,11 @@
 <img src=".\Logos\all.png" alt="logos" width="600"/>
 
-<img src="./Practica 1º Trimestre/rsc/img/banner.png">
-
 <br>
 
 # Servicios de Red e Internet
 Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de Red e Internet
+
+<img src="./Practica 1º Trimestre/rsc/img/banner.png">
 
 ## Indice
 
@@ -26,7 +26,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 4 | [Uso del comando cURL.](./Tema%200/Ejercicios.md#ejercicio-4---usando-curl-) |
 | 5 | [Práctica donde se prueban diferentes formas de crear servidores web.](./Tema%200/Ejercicios.md#ejercicio-5---práctica-a-servidor-web-) |
 
-<img src="./Tema0.png">
+<img src="./Tema1.png">
 
 | Nº Ejercicio | Descripción  |
 |:-:|:-:|
@@ -45,7 +45,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 | 3 |   |
 | 4 |   |
 
-<img src="./Tema0.png">
+<img src="./PR.png">
 
 | Nº Práctica | Nombre  |
 |:-:|:-:|
