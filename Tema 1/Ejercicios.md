@@ -41,11 +41,19 @@
   <summary>Actividad #9 - Autenticación y Autorización</summary>
 
   - [Creación de usuarios](#creación-de-usuarios)
-  - [Crear grupos de usaurios](#crear-grupos-de-usuarios)
+  - [Crear grupos de usuarios](#crear-grupos-de-usuarios)
   - [Directorios Privados](#directorios-privados)
   - [Directiva Satisfy](#directiva-satisfy)
   - [Restricción de acceso local](#restricción-de-acceso-local)
+  - [Autenticación con MySQL](#autenticación-mysql)
 
+
+  </details>
+
+  <details>
+  <summary>Actividad #10 - Crear un certificado autofirmado y activar el módulo SSL</summary>
+
+  - [Módulo SSL](#actividad-10---crear-un-certificado-autofirmado-y-activar-el-módulo-ssl)
 
   </details>
 
@@ -415,8 +423,6 @@ bash NombreScript.sh NombreDominio Titulo/NombrePagina Encabezado Mensaje
 <img src="./rsc/img/apacheconf3_3.png" alt="phpinfo" width="470"/>
 
 
-## Actividad #6
-
 ## Actividad #7 - Rewrite
 
 Este módulo de Apache habilita la capacidad de reescribir URLs mediante el uso de expresiones regulares
@@ -509,6 +515,9 @@ Con esta sentencia cambiaremos el index predeterminado a uno específico para el
 
 <img src="./rsc/img/Rewrite3.png" alt="phpinfo" width="470"/>
 
+<br>
+<br>
+
 ## Actividad #9 - Autenticación y Autorización
 
 - Autenticación es cualquier proceso por el cuál se verifica que uno es quien dice ser.
@@ -519,7 +528,6 @@ Para empezar a utilizar este módulo debemos habilatarlo, primero para ello escr
 sudo a2enmod auth_basic
 ````
 
-<br>
 <br>
 
 ### Creación de usuarios
@@ -597,7 +605,6 @@ Ahora si ingresamos a la carpeta del dominio aparacerá lo siguiente:
 <img src="./rsc/img/auth5.png" alt="phpinfo" width="670"/>
 
 <br>
-<br>
 
 #### Acceso restringido por grupos
 
@@ -636,15 +643,9 @@ Comprobamos que los usuarios del grupo que están en el grupo definido pueden en
 <br>
 <br>
 
-### Directiva Satisfy
-
-### Restricción de acceso local
-
-<br>
-<br>
 
 
-## Actividad #9.5 - Autenticación MySQL
+### Autenticación MySQL
 
 ### Instalación y configuración LAMP Server
 
