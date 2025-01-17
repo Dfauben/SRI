@@ -49,6 +49,20 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 <br>
 <br>
 
+<img src="./Tema2.png">
+
+<br>
+
+| Nº Ejercicio | Descripción  |
+|:-:|:-:|
+| 3 | [Nslookup](./Tema%201/Ejercicios.md#actividad-1)  |
+| 4 | [Dig](./Tema%201/Ejercicios.md#actividad-2)  |
+| ... |   |
+    
+
+<br>
+<br>
+
 <img src="./PR.png">
 
 <br>
