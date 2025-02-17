@@ -129,9 +129,144 @@ Ahora acudimos al panel de nuestras bases de datos y seleccionamos la base de da
 <br></br>
 <img src="./img/BD6.png" width="870">
 
+Comprobamos la conexión de la base de datos desde nuestra instancia EC2. Lo hacemos con el comando:
+````
+mysql -h puerto_de_enlace_BD -u usuario -p
+````
+<br>
+<img src="./img/BD7.png" width="870">
+
 
 ## Elastic File System (EFS)
 <em>Amazon Elastic File System</em> (EFS) permite compartir un sistema de archivos entre varias instancias EC2. Para utilizarlo, se crea un sistema de archivos desde la consola de AWS y se configura su acceso para que pueda ser montado en una instancia. Esto facilita el almacenamiento y acceso a archivos desde múltiples servidores sin necesidad de configuraciones complejas.
 
+Accedemos a la pestaña de EFS en AWS y seleccionamos **Crear sistema de archivos**. Ponemos un nombre y asociamos a nuestra VPC
+
+<img src="./img/EFS1.png" width="670"><br>
+
+Tendremos que crear una nueva regla para nuestro grupo de seguridad que nos permita acceder a nuestro sistema de archivos. Para ello, seleccionamos la pestaña de grupos de seguridad y luego seleccionamos la regla de entrada que queremos modificar. En el campo **Tipo de protocolo**, seleccionamos **NFS**.
+
+<br>
+<img src="./img/EFS2.png" width="870">
+
+<br>
+
+Acudimos a la sección de EFS y seleccionamos nuestro EFS, clicamos en **Red** y administramos nuestro punto de montaje. En nuestra subred deberemos proporcionar el grupo de seguridad.
+
+<br>
+<img src="./img/EFS5.png" width="870"><br>
+
+Para asociar nuestro EFS a nuestra instancia EC2, debemos montarlo en nuestra instancia. Para ello, ejecutamos el comando que encontramos en el botón de **Asociar** del panel de nuestra EFS.
+
+<br>
+<img src="./img/EFS3.png" width="870">
+
+<br>
+
+Vamos a nuestra instancia y con el comando anterior montamos nuestro EFS. Comprobamos su montaje con el comando:
+````
+df -h
+````
+
+<br>
+<img src="./img/EFS4.png" width="870">
+
+<br>
+
+
 ## Descarga de Wordpress
 Para descargar e instalar WordPress en una instancia EC2, se obtiene el paquete oficial desde su sitio web y se descomprime en el directorio adecuado del servidor web. Posteriormente, se configuran los archivos necesarios para conectar WordPress con la base de datos y completar la instalación a través del navegador. Esto permite desplegar un sitio web funcional en AWS con facilidad.
+
+Descargamos la ultima versión de wordpress dentro de nuestro directorio de apache "/var/www/html" con el comando:
+````
+sudo wget https://es.wordpress.org/latest.tar.gz
+````
+Lo descomprimimos con el comando:
+````
+tar -xf latest.tar.gz
+````
+<br>
+<img src="./img/WP1.png" width="870">
+
+<br>
+
+Volvemos a entrar en MySQL con nuestra credenciales. Necesitaremos tener instalado el cliente de MySQL, lo instalammos con:
+````
+sudo apt install mysql-client -y
+````
+<br>
+<img src="./img/BD7.png" width="870">
+
+<br>
+
+Ahora crearemos una base de datos con los comandos:
+````MySQL
+CREATE DATABASE wordpress;
+CREATE USER 'wordpress_user'@'%' IDENTIFIED BY 'password123';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress_user'@'%';
+FLUSH PRIVILEGES;
+````
+
+Entramos desde la ip publica de nuestra instancia desde el navegador
+
+<img src="./img/WP2.png" width="870">
+
+<br>
+
+A continuación deberemos rellenar los campos con el nombre de la base de datos de RDS, el nombre de usuario y contraseña que creamos anteriormente, y el punto de enlace de la base de datos. Una vez rellenados los campos, pulsamos **Submit**.
+
+
+#### Vinculación del EFS en Wordpress (Carpeta wp-content)
+
+Detenmos primero apache con el comando:
+
+````
+sudo systemctl stop apache2
+````
+
+Movemos la carpeta **wp-content** a nuestro EFS con el comando:
+
+````
+sudo cp -r /var/www/html/wp-content Ruta_EFS
+````
+
+Podemos renombrar la carpeta original para que no se sobreescriba con el comando:
+
+````
+sudo mv /var/www/html/wp-content /var/www/html/wp-content-old
+````
+
+Creamos una vinculación de la carpeta wp-content en el EFS con el comando:
+
+````
+sudo ln -s /mnt/efs/wp-content /var/www/html/wp-content
+````
+
+Modificamos los permisos de la carpeta EFS para que el usuario apache pueda leer y escribir en ella:
+
+````
+sudo chown -R www-data:www-data /mnt/efs/wp-content
+sudo chmod -R 775 /mnt/efs/wp-content
+````
+
+Finalmente , reiniciamos apache para que se apliquen los cambios:
+
+````
+sudo systemctl start apache2
+````
+
+<br></br>
+
+**NOTA**:
+Para realizar un montaje automatico de EFS tendremos que editar el archivo de configuración **fstab** mediante el comando:
+````
+sudo nano /etc/fstab
+````
+E incluir al final lo siguiente:
+````
+IP_Instancia:/ Ruta_EFS nsf4 default,_netdev 0 0
+````
+
+<img src="./img/WP4.png" width="870">
+
+<br>
