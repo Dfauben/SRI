@@ -39,12 +39,12 @@ Creamos nuestro grupo de seguridad dejando abierto los puertos 80, 22 y 443, asi
 ### Configuración de la instancia
 Lanzamos una instancia con Ubuntu server
 <br></br>
-<img src="./img/instancia.png" width="670">
+<img src="./img/instancia.png" width="870">
 
 #### Asignación del grupo de seguridad a nuestra instancia
 Vamos a la pestaña de Configuraciones de red, editamos la configuración de red y seleccionamos el grupo de seguridad que creamos anteriormente. También asignaremos nuestra VPC.
 <br></br>
-<img src="./img/vpc.png" width="670">
+<img src="./img/vpc.png" width="870">
 
 Finalmente entramos en nuestra máquina sin problemas.
 <br></br>
@@ -107,27 +107,27 @@ AWS ofrece Amazon RDS para gestionar bases de datos en la nube. Al crear una bas
 
 Desde la pestaña de RDS en AWS, seleccionamos crear una nueva base de datos, luego seleccionamos MySQL como motor de nuestra base de datos.
 <br></br>
-<img src="./img/BD1.png" width="670">
+<img src="./img/BD1.png" width="870">
 <br></br>
 Seleccionamos **Capa gratuita**
 <br></br>
-<img src="./img/BD2.png" width="670">
+<img src="./img/BD2.png" width="870">
 <br></br>
 Configuramos el identficador y las credenciales de la Base de Datos.
 <br></br>
-<img src="./img/BD3.png" width="670">
+<img src="./img/BD3.png" width="870">
 <br></br>
 Ahora nos toca ajustar las diferentes opciones de conectividad y seguridad. Asignamos nuestra VPC y grupo de seguridad
 <br></br>
-<img src="./img/BD4.png" width="670">
+<img src="./img/BD4.png" width="870">
 <br></br>
 Finalmente deberemos inevitablemente poner nombre al campo **Nombre de la base de datos incial**
 <br></br>
-<img src="./img/BD5.png" width="670">
+<img src="./img/BD5.png" width="870">
 <br></br>
 Ahora acudimos al panel de nuestras bases de datos y seleccionamos la base de datos que acabamos de crear clicamos en Acciones y luego en **Configurar la conexión de EC2**, seleccionamos nuestra instancia y damos en **Continuar**.
 <br></br>
-<img src="./img/BD6.png" width="670">
+<img src="./img/BD6.png" width="870">
 
 
 ## Elastic File System (EFS)
