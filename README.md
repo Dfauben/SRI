@@ -63,7 +63,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 <br>
 <br>
 
-<img src="./Tema4_AWS.png">
+[<img src="./Tema4_AWS.png">](./Tema%204%20AWS/Ejercicios.md)
 
 <br>
 
