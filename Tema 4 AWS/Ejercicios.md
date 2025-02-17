@@ -26,6 +26,8 @@
 
 <em>Amazon Web Services</em> (AWS) es una plataforma de computación en la nube que ofrece una amplia variedad de servicios para el almacenamiento, procesamiento, redes y bases de datos. Es utilizada por empresas y desarrolladores para desplegar aplicaciones escalables y seguras sin necesidad de administrar infraestructura física.
 
+<img src="./img/banner.png" width="1280">
+
 ## Creación de instancias
 La creación de instancias en AWS se realiza a través del servicio Amazon Elastic Compute Cloud, conocido como EC2. Permite lanzar y gestionar máquinas virtuales configurando el sistema operativo, el tipo de instancia y los permisos de acceso. Tras su creación, es posible conectarse a la instancia y configurarla según las necesidades del usuario.
 
