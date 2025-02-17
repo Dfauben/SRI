@@ -63,6 +63,23 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Servicios de 
 <br>
 <br>
 
+<img src="./Tema4_AWS.png">
+
+<br>
+
+| Nº Ejercicio | Descripción  |
+|:-:|:-:|
+| 1 | [Introducción]()  |
+| 2 | [Creación de instancias]()  |
+| 3 | [Apache y PHP]()  |
+| 4 | [Creación de la base de datos]()  |
+| 5 | [Elastic File System (EFS)]()  |
+| 6 | [Descarga de Wordpress]()  |
+    
+
+<br>
+<br>
+
 <img src="./PR.png">
 
 <br>

@@ -64,9 +64,11 @@
 
 <br>
 
-## Actividad #1
+## Actividad #2 - NsLookup
 
-### La UHU (Universidad de Huelva) tiene varios servidores DNS. Consulta a tu servidor DNS por defecto sus direcciones IP al menos 2 de ellos.
+### Ejercicio 1
+
+#### La UHU (Universidad de Huelva) tiene varios servidores DNS. Consulta a tu servidor DNS por defecto sus direcciones IP al menos 2 de ellos.
 
 Utilizamos el comando:
 
@@ -92,17 +94,17 @@ nslookup 'nombre del servidor DNS'
 
 <br>
 
-## Actividad #2
+### Actividad #2
 
-### ¿Son las respuestas anteriores autoritativas? 
+#### ¿Son las respuestas anteriores autoritativas? 
 
 Al no venir de un servidor autoritativo, la información no es fiable, por lo tanto no es autoritativa.
 
 <br>
 
-## Actividad #3
+### Actividad #3
 
-### Consulta la dirección IP de un servidor de correo de uhu.es.
+#### Consulta la dirección IP de un servidor de correo de uhu.es.
 
 Utilizamos el comando:
 
@@ -116,17 +118,17 @@ Con el que obtendremos la IP del servidor de correo asociado al dominio que cons
 
 <br>
 
-## Actividad #4
+### Actividad #4
 
-### ¿Son las respuestas anteriores autoritativas? 
+#### ¿Son las respuestas anteriores autoritativas? 
 
 Sí, ya que comprobamos que la informción solicitada proviene de un servidor autoritativo del dominio.
 
 <br>
 
-## Actividad #5
+### Actividad #5
 
-### Si hay más de un servidor dns autoritativo para el dominio uhu.es, ¿cómo sabemos cuál es el primario? ¿en qué fecha se actualizó por última vez? ¿cúal es la dirección e-mail del administrador?
+#### Si hay más de un servidor dns autoritativo para el dominio uhu.es, ¿cómo sabemos cuál es el primario? ¿en qué fecha se actualizó por última vez? ¿cúal es la dirección e-mail del administrador?
 
 Utilizamos el siguiente comando:
 
@@ -146,9 +148,9 @@ Aunque observamos que no se encuentra definida.
 
 <br>
 
-## Actividad #6
+### Actividad #6
 
-### Comprueba que el DNS inverso está bien configurado para dns-1.uhu.es.
+#### Comprueba que el DNS inverso está bien configurado para dns-1.uhu.es.
 
 Consultamos la dirección IP del servidor dns-1.uhu.es con el siguiente comando:
 ````
@@ -171,9 +173,9 @@ Comprobamos que la busqueda nos devuelve el nombre del servidor dns-1.uhu.es. Po
 
 <br>
 
-## Actividad #7
+### Actividad #7
 
-### Comprueba que el DNS inverso está bien configurado para www.bp.com.
+#### Comprueba que el DNS inverso está bien configurado para www.bp.com.
 
 Consultamos la dirección IP del dominio www.bp.com con el siguiente comando:
 ````
@@ -195,9 +197,9 @@ nslookup 54.72.215.189
 
 <br>
 
-## Actividad #8
+### Actividad #8
 
-### Por defecto, el comando NSLOOKUP devuelve los registros de tipo A. ¿Qué se obtiene al consultar los registros NS? Se obtienen los servidores autoritativos para un dominio.
+#### Por defecto, el comando NSLOOKUP devuelve los registros de tipo A. ¿Qué se obtiene al consultar los registros NS? Se obtienen los servidores autoritativos para un dominio.
 
 Para consultar los registros de tipo ns, añadimos a nuestro comando el parámetro -type=ns. Utilizamos el comando:
 
@@ -209,9 +211,9 @@ Con <b>-type=ns</b> obtendremos los nombres de los servidores DNS autoritaticos 
 
 <br>
 
-## Actividad #9
+### Actividad #9
 
-### Consulta el TLD de las páginas de España: “es”.
+#### Consulta el TLD de las páginas de España: “es”.
 
 Empleamos el siguiente comando:
 
@@ -223,14 +225,37 @@ nslookup -type=ns es
 
 <br>
 
-## Actividad #10
+### Actividad #10
 
-### ¿Puede un mismo nombre de dominio traducirse en varias direcciones IP distintas? 
+#### ¿Puede un mismo nombre de dominio traducirse en varias direcciones IP distintas? 
 
 Sí, en la mayoría de caso se desea una alta disponibilidad, por ello un mismo dominio tiene varios servidores de respaldo, lo que se traduce como que un mismo dominio tenga varias IP.
 
-## Actividad #11
+### Actividad #11
 
-### ¿Quién decide a cuál de las direcciones IP se envía una petición? 
+#### ¿Quién decide a cuál de las direcciones IP se envía una petición? 
 
 El <em>DNS resolver local</em> es quien se encargará de decidir a cuál de las direcciones IP se envía una petición. El DNS resolver procesará la solicitud y se encargará de dar la dirección IP correcta.
+
+## Ejercicio de 6 - Master DNS
+
+### Configuración de Zona DNS
+
+Editamos el archivo hosts con el siguiente comando:
+
+````
+sudo nano /etc/hosts
+````
+
+Mantenemos actualizados los paquetes de Ubuntu con los siguientes comandos:
+
+````
+sudo apt update
+sudo apt upgrade -y
+````
+
+Instalamos BIND:
+````
+sudo apt install bind9 bind9utils bind9-doc -y
+````
+
