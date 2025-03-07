@@ -123,6 +123,103 @@ sudo docker push davidfau/gettingstarted
 
 ## Actividad 3
 
+---
+
+### 1. Descargar imágenes de Docker
+Ejecuta los siguientes comandos para descargar las imágenes necesarias:
+
+```sh
+docker pull ubuntu
+docker pull hello-world
+docker pull nginx
+```
+
+<img src="./img/pull.png" width="680">
+
+Para verificar que las imágenes se han descargado correctamente, usa:
+
+```sh
+docker images -a
+```
+
+<img src="./img/check.png" width="680">
+
+---
+
+### 2. Ejecutar contenedores
+Lanza tres contenedores basados en la imagen `hello-world` con nombres específicos:
+
+```sh
+docker run --name myhello1 hello-world
+docker run --name myhello2 hello-world
+docker run --name myhello3 hello-world
+```
+
+<img src="./img/helloworld1_1.png" width="680">
+
+ℹ️ **Nota:** `hello-world` es una imagen de prueba que se ejecuta y finaliza inmediatamente.
+Para ver la lista de contenedores creados (ejecutados o detenidos), usa:
+
+```sh
+docker ps -a
+```
+
+---
+
+## 3. Mostrar contenedores en ejecución
+Para listar solo los contenedores en ejecución:
+
+```sh
+docker ps
+```
+
+<img src="./img/check2.png" width="680">
+
+---
+
+## 4. Detener contenedores
+Si algún contenedor sigue en ejecución, puedes detenerlo con:
+
+```sh
+docker stop myhello1
+docker stop myhello2
+```
+
+<img src="./img/stop.png" width="680">
+
+---
+
+## 5. Eliminar contenedores
+Para eliminar un contenedor específico:
+
+```sh
+docker rm myhello1
+```
+
+<img src="./img/rm.png" width="680">
+
+
+Para verificar los contenedores después de eliminar uno:
+
+```sh
+docker ps -a
+```
+
+Para eliminar **todos los contenedores**, ejecuta:
+
+```sh
+docker ps -aq | xargs docker rm
+```
+
+<img src="./img/rmall.png" width="680">
+
+
+⚠️ **Precaución:** Este comando elimina **todos** los contenedores, incluso los detenidos.
+
+---
+
 ## Actividad 4
+
+
 
 ## Actividad 5

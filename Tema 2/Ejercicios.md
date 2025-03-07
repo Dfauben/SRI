@@ -193,15 +193,7 @@ Sí, en la mayoría de caso se desea una alta disponibilidad, por ello un mismo 
 
 El <em>DNS resolver local</em> es quien se encargará de decidir a cuál de las direcciones IP se envía una petición. El DNS resolver procesará la solicitud y se encargará de dar la dirección IP correcta.
 
-## Ejercicio de 6 - Master DNS
-
-### Configuración de Zona DNS
-
-Editamos el archivo hosts con el siguiente comando:
-
-````
-sudo nano /etc/hosts
-````
+## Servidor Caché y Forwarding - Bind9
 
 Mantenemos actualizados los paquetes de Ubuntu con los siguientes comandos:
 
@@ -215,3 +207,53 @@ Instalamos BIND:
 sudo apt install bind9 bind9utils bind9-doc -y
 ````
 
+Para el caché del DNS solo debemos de modificar este archivo
+
+```
+sudo nano /etc/bindnamed.conf.options
+```
+
+Una vez abierto el archivo quitamos todo los comentarios, y nos debrá quear una cosa así.
+
+````
+options {
+      directory "/var/cache/bind";
+
+      dnssec-validation auto;
+
+      auth-nxdomain no;    # conform to RFC1035
+      listen-on-v6 { any; };
+
+      recursion yes;
+      allow-query { goodclients; };
+
+      forwarders {
+                8.8.8.8;
+                8.8.4.4;
+      };
+      forward only;
+
+      dnssec-enable yes;
+      dnssec-validation yes;
+};
+````
+````
+acl goodclients {
+    192.0.2.0/24;
+    localhost;
+    localnets;
+};
+````
+
+
+imagen
+
+Reiniciamos el servicio de Bind
+
+````
+sudo systemctl restart bind9
+````
+
+En la máquina cliente ponemos de DNS la ip del equipo con el servicio bind9 y realizamos una consulta:
+
+imagen
