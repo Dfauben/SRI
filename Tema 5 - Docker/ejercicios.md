@@ -3,12 +3,11 @@
 ## Índice
 
 - [Inicio](../README.md)
-- [Tema 0 - Introducción](../Tema%200/Ejercicios.md)
-- [Tema 1 - Servidores Web](#Tema-X-Placeholder)
-- [Tema 2 - DNS](#Tema-X-Placeholder)
-- [Tema 3 - Servidores de Transferencia de archivos](#Tema-X-Placeholder)
+- [Introducción](../Tema%200/Ejercicios.md)
+- [Servidores Web](../Tema%201/Ejercicios.md)
+- [Domain Name System (DNS)](../Tema%202/Ejercicios.md)
 
-- <details><summary>Tema 5 - Docker</summary>
+- <details><summary>Docker</summary>
 
   - [Introducción](#introducción)
   - [Actividad 2](#)
@@ -18,7 +17,7 @@
 
 </details>
 
-- [AWS - Amazon Web Services](#Tema-X-Placeholder)
+- [AWS - Amazon Web Services](../Tema%204%20AWS/Ejercicios.md)
 
 <br>
 

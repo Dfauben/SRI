@@ -1,66 +1,22 @@
 # Tema 2 - DNS (<em>Domain Name System</em>)
 
-## Indice
+## Índice
 
 - [Inicio](../README.md)
-- [Tema 0 - Introducción](../Tema%200/Ejercicios.md)
+- [Introducción](../Tema%200/Ejercicios.md)
+- [Servidores Web](../Tema%201/Ejercicios.md)
 
-- <details><summary>Tema 1 - Servidores Web</summary>
+- <details><summary>Domain Name System (DNS)</summary>
 
-  <details>
-  <summary>Actividad #1 - Instalación del servidor web</summary>
-
-  - [Instalación de Apache](#instalación-de-apache-en-ubuntu)
-  - [Instalación de MySQL](#instalación-de-mysql)
-  - [Instalación de PHP](#instalación-de-php)
-  - [Creación de un Host Virtual para la página](#creación-de-un-host-virtual-para-la-página)
-
-  </details>
-
-  <details><summary>Actividad #2 - Configuración básica de Apache (Scripts)</summary>
-
-  - [Script #1](#1-creación-de-un-script-que-añada-un-puerto-de-escucha-en-el-fichero-de-configuración-de-apache)
-  - [Script #2](#2-creación-de-un-script-que-añada-un-nombre-de-dominio-y-una-ip-en-el-fichero-hosts)
-  - [Script #3](#3-crea-un-script-que-nos-permita-crear-una-página-web-con-un-título-una-cabecera-y-un-mensaje)
-
-  </details>
-
-  <details>
-  <summary>Actividad #7 - Módulo Rewrite</summary>
-
-  - [Habilitar Móddulo](#habilitando-el-módulo-rewrite)
-  - [Creación de un .htacces](#crear-un-htacces-para-rewrite)
-  - [Redirección con cambio de extensión](#redirección-url-con-diferente-extensión) 
-  - [URL amigable](#url-amigable)
-  - [Redirección a página externa](#redireccionar-a-una-página-externa)
-  - [Redirección según navegador](#redireccionar-según-el-navegador-utilizado)
-
-  </details>
-
-  <details>
-  <summary>Actividad #9 - Autenticación y Autorización</summary>
-
-  - [Creación de usuarios](#creación-de-usuarios)
-  - [Crear grupos de usuarios](#crear-grupos-de-usuarios)
-  - [Directorios Privados](#directorios-privados)
-  - [Directiva Satisfy](#directiva-satisfy)
-  - [Restricción de acceso local](#restricción-de-acceso-local)
-  - [Autenticación con MySQL](#autenticación-mysql)
-
-
-  </details>
-
-  <details>
-  <summary>Actividad #10 - Crear un certificado autofirmado y activar el módulo SSL</summary>
-
-  - [Módulo SSL](#actividad-10---crear-un-certificado-autofirmado-y-activar-el-módulo-ssl)
-
-  </details>
+  - [Introducción](#introducción)
+  - [Nslookup](#actividad-2---nslookup)
+  - [Master Zone](#ejercicio-de-6---master-dns)
+  - [Actividad 5](#)
 
 </details>
 
-- [Tema 2 - Placeholder](#Tema-X-Placeholder)
-- [Tema 3 - Placeholder](#Tema-X-Placeholder)
+- [Contenedores en la nube - Docker](../Tema%205%20-%20Docker/ejercicios.md)
+- [AWS - Amazon Web Services](../Tema%204%20AWS/Ejercicios.md)
 
 <br>
 

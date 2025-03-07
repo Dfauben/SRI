@@ -59,8 +59,10 @@
 
 </details>
 
-- [Tema 2 - Placeholder](#Tema-X-Placeholder)
-- [Tema 3 - Placeholder](#Tema-X-Placeholder)
+- [Domain Name System](../Tema%202/Ejercicios.md)
+- [Contenedores en la nube - Docker](../Tema%205%20-%20Docker/ejercicios.md)
+- [AWS - Amazon Web Services](../Tema%204%20AWS/Ejercicios.md)
+
 ## Actividad #1
 
 ### La arquitectura Web es un modelo compuesto de tres capas, ¿cuáles son y cuál es  la función de cada una de ellas?
