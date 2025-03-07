@@ -420,6 +420,135 @@ Una vez que ambos contenedores están funcionando, puedes acceder a la aplicaci�
 
 ### GuestBook - Ejemplo 1
 
+Este ejemplo muestra cómo desplegar la aplicación *Guestbook* utilizando **Docker Compose**. Puedes encontrar el archivo `docker-compose.yaml` en este [repositorio](https://github.com/josedom24/curso_docker_ies/tree/main/ejemplos/modulo4/ejemplo1).
+
+El archivo `docker-compose.yaml` define dos servicios: uno para la aplicación *Guestbook* y otro para la base de datos *Redis*. A continuación, el contenido del archivo:
+
+````yaml
+version: '3.1'
+services:
+  aplicacionjava:
+    container_name: tomcat
+    image: tomcat:9.0
+    restart: always
+    volumes:
+      - ./sample.war:/usr/local/tomcat/webapps/sample.war:ro
+  proxy:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+````
+
+Para levantar los contenedores, ejecuta el siguiente comando en el directorio donde esté el archivo docker-compose.yaml:
+
+````bash
+docker compose up -d
+````
+
+<img src="./img/ej411.png" width="680">
+
+Recordamos como comprobar los contenedores que están en ejecución con:
+````
+docker compose ps
+````
+
+<img src="./img/ej412.png" width="680">
+
+#### Acceder a la Aplicación
+Una vez que ambos contenedores están funcionando, puedes acceder a la aplicación a través de la IP de tu servidor o http://localhost. Esto redirigirá la solicitud al contenedor Tomcat a través de Nginx, mostrando la aplicación desplegada.
+
+<img src="./img/ej413.png" width="680">
+
+
+
 ### Temperaturas - Ejemplo 2
 
+Este ejemplo muestra cómo desplegar la aplicación *Temperaturas* utilizando **Docker Compose**. Puedes encontrar el archivo `docker-compose.yaml` en este [repositorio](https://github.com/josedom24/curso_docker_ies/tree/main/ejemplos/modulo4/ejemplo2).
+
+El archivo `docker-compose.yaml` define dos servicios: uno para la aplicación *Guestbook* y otro para la base de datos *Redis*. A continuación, el contenido del archivo:
+
+````yaml
+version: '3.1'
+services:
+  frontend:
+    container_name: temperaturas-frontend
+    image: iesgn/temperaturas_frontend
+    restart: always
+    ports:
+      - 8081:3000
+    environment:
+      TEMP_SERVER: temperaturas-backend:5000
+    depends_on:
+      - backend
+  backend:
+    container_name: temperaturas-backend
+    image: iesgn/temperaturas_backend
+    restart: always
+````
+
+Para levantar los contenedores, ejecuta el siguiente comando en el directorio donde esté el archivo docker-compose.yaml:
+
+````bash
+docker compose up -d
+````
+
+<img src="./img/ej421.png" width="680">
+
+Recordamos como comprobar los contenedores que están en ejecución con:
+````
+docker compose ps
+````
+
+<img src="./img/ej422.png" width="680">
+
+#### Acceder a la Aplicación
+Una vez que ambos contenedores están funcionando, puedes acceder a la aplicación a través de la IP de tu servidor o http://localhost. Esto redirigirá la solicitud al contenedor Tomcat a través de Nginx, mostrando la aplicación desplegada.
+
+<img src="./img/ej423.png" width="680">
+
 ### Tomcat + Nginx - Ejemplo 3
+
+Este ejemplo muestra cómo desplegar la aplicación *Tomcat* y *Nginx* utilizando **Docker Compose**. Puedes encontrar el archivo `docker-compose.yaml` en este [repositorio](https://github.com/josedom24/curso_docker_ies/tree/main/ejemplos/modulo4/ejemplo3).
+
+El archivo `docker-compose.yaml` define dos servicios: uno para la aplicación *Guestbook* y otro para la base de datos *Redis*. A continuación, el contenido del archivo:
+
+````yaml
+version: '3.1'
+services:
+  aplicacionjava:
+    container_name: tomcat
+    image: tomcat:9.0
+    restart: always
+    volumes:
+      - ./sample.war:/usr/local/tomcat/webapps/sample.war:ro
+  proxy:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+````
+
+Para levantar los contenedores, ejecuta el siguiente comando en el directorio donde esté el archivo docker-compose.yaml:
+
+````bash
+docker compose up -d
+````
+
+<img src="./img/ej431.png" width="680">
+
+Recordamos como comprobar los contenedores que están en ejecución con:
+````
+docker compose ps
+````
+
+<img src="./img/ej432.png" width="680">
+
+#### Acceder a la Aplicación
+Una vez que ambos contenedores están funcionando, puedes acceder a la aplicación a través de la IP de tu servidor o http://localhost. Esto redirigirá la solicitud al contenedor Tomcat a través de Nginx, mostrando la aplicación desplegada.
+
+<img src="./img/ej433.png" width="680">
