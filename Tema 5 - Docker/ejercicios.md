@@ -24,8 +24,6 @@
 
 ## Introducción
 
-### Introducción a Docker  
-
 Plataforma que permite desarrollar, empaquetar y ejecutar aplicaciones en contenedores, proporcionando un entorno portátil y consistente. A diferencia de las máquinas virtuales, los contenedores comparten el kernel del sistema operativo, lo que optimiza el uso de recursos y mejora la eficiencia.  
 
 Su uso simplifica el despliegue de aplicaciones al evitar problemas de compatibilidad entre entornos y facilita la escalabilidad. En esta guía, exploraremos las bases de Docker, haciendo gestión de contenedores e imágenes.
@@ -123,3 +121,9 @@ sudo docker push davidfau/gettingstarted
 ````
 
 <img src="./img/share4.png" width="680">
+
+## Actividad 3
+
+## Actividad 4
+
+## Actividad 5
