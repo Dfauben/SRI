@@ -205,7 +205,6 @@ Antes de comenzar, es recomendable actualizar los paquetes disponibles en el sis
 sudo apt update && sudo apt upgrade -y
 ```
 
-![](/Tema2/img/Screenshot_1.png)
 
 Luego, reiniciamos el sistema para aplicar cualquier cambio necesario.
 
@@ -261,8 +260,7 @@ options {
 };
 ```
 
-![](/Tema2/img/Screenshot_5.png)
-![](/Tema2/img/Screenshot_6.png)
+<img src="./img/dns1.png" width="680">
 
 ## Verificación de configuración
 
@@ -272,15 +270,13 @@ Ejecutamos el siguiente comando para comprobar que no hay errores en la configur
 sudo named-checkconf
 ```
 
-![](/Tema2/img/Screenshot_7.png)
-
 Si no hay mensajes de error, reiniciamos el servicio.
 
 ```bash
 sudo systemctl restart bind9
 ```
 
-![](/Tema2/img/Screenshot_8.png)
+
 
 ## Configuración del cortafuegos
 
@@ -290,7 +286,7 @@ Permitimos el tráfico necesario para Bind9 a través del firewall.
 sudo ufw allow Bind9
 ```
 
-![](/Tema2/img/Screenshot_9.png)
+
 
 ## Monitoreo del servicio
 
@@ -300,7 +296,6 @@ Podemos visualizar los registros del servicio en tiempo real con:
 sudo journalctl -u bind9 -f
 ```
 
-![](/Tema2/img/Screenshot_10.png)
 
 ## Configuración del cliente DNS
 
@@ -310,7 +305,6 @@ Modificamos el archivo de configuración de DNS del servidor para que utilice su
 sudo nano /etc/resolv.conf
 ```
 
-![](/Tema2/img/Screenshot_11.png)
 
 Dentro del archivo, agregamos la dirección IP del servidor DNS.
 
@@ -318,7 +312,7 @@ Dentro del archivo, agregamos la dirección IP del servidor DNS.
 nameserver DIRECCIÓN_IP
 ```
 
-![](/Tema2/img/Screenshot_12.png)
+<img src="./img/dns2.png" width="680">
 
 Para comprobar que el servidor está resolviendo correctamente, hacemos una prueba de ping a un dominio.
 
@@ -326,11 +320,11 @@ Para comprobar que el servidor está resolviendo correctamente, hacemos una prue
 ping -c 1 google.com
 ```
 
-![](/Tema2/img/Screenshot_13.png)
+<img src="./img/dns3.png" width="680">
 
 Ahora, configuramos otro equipo en la misma red para que utilice este servidor DNS y verificamos que también funcione.
 
-![](/Tema2/img/Screenshot_14.png)
+<img src="./img/dns4.png" width="380">
 
 Ejecutamos la misma prueba en el cliente.
 
@@ -338,6 +332,6 @@ Ejecutamos la misma prueba en el cliente.
 ping google.com
 ```
 
-![](/Tema2/img/Screenshot_15.png)
-
 Si la respuesta es satisfactoria, nuestro servidor DNS está funcionando correctamente en modo caché y reenvío.
+
+<img src="./img/dns5.png" width="580">
