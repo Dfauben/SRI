@@ -552,3 +552,249 @@ docker compose ps
 Una vez que ambos contenedores están funcionando, puedes acceder a la aplicación a través de la IP de tu servidor o http://localhost. Esto redirigirá la solicitud al contenedor Tomcat a través de Nginx, mostrando la aplicación desplegada.
 
 <img src="./img/ej433.png" width="680">
+
+
+## Actividad 6
+
+### Ejemplo 1
+
+#### Creación de una Imagen a partir de un Contenedor
+
+Normalmente utilizamos imágenes preexistentes de Docker Hub, pero en muchos casos necesitamos personalizar una imagen para adaptarla a nuestras necesidades. Esto es lo que se conoce como "dockerizar" una aplicación.
+
+Una forma sencilla de hacerlo es modificar un contenedor en ejecución y luego guardar esos cambios en una nueva imagen.
+
+### Pasos para Crear una Imagen desde un Contenedor
+
+#### 1. Iniciar un Contenedor desde una Imagen Base
+Para comenzar, ejecutamos un contenedor interactivo basado en una imagen base.
+
+````bash
+ docker run -it --name mi_contenedor debian bash
+````
+
+<img src="./img/ej511.png" width="680">
+
+#### 2. Realizar Modificaciones
+Dentro del contenedor podemos instalar paquetes, modificar archivos, o realizar cualquier otra personalización.
+
+````bash
+root@contenedor:/# apt update && apt install -y apache2
+root@contenedor:/# echo "<h1>Mi Servidor Web</h1>" > /var/www/html/index.html
+root@contenedor:/# exit
+````
+
+<img src="./img/ej512.png" width="680">
+
+#### 3. Crear una Imagen desde el Contenedor
+Usamos `docker commit` para capturar los cambios realizados en una nueva imagen.
+
+````bash
+ docker commit mi_contenedor usuario/miapache:v1
+````
+
+Podemos verificar que la imagen se ha creado correctamente con:
+
+````bash
+$ docker images
+REPOSITORY             TAG    IMAGE ID      CREATED        SIZE
+usuario/miapache      v1     abc123        10 seconds ago  243MB
+````
+
+<img src="./img/ej513.png" width="680">
+
+
+### 4. Crear un Contenedor desde la Nueva Imagen
+Para ejecutar nuestra imagen personalizada, es necesario indicar el proceso principal que debe ejecutarse al iniciarse el contenedor.
+
+```bash
+ docker run -d -p 8080:80 \
+             --name servidor_web \
+             usuario/miapache:v1 \
+             bash -c "apache2ctl -D FOREGROUND"
+```
+
+Ahora podemos acceder a nuestro servidor web en `http://localhost:8080`.
+
+<img src="./img/ej514.png" width="680">
+
+
+
+### Ejemplo 2
+
+En este ejemplo, crearemos una imagen Docker que sirva una página estática. Se generarán tres versiones distintas utilizando diferentes imágenes base. Puedes encontrar los archivos en este [repositorio](https://github.com/josedom24/curso_docker_ies/tree/main/ejemplos/modulo5/ejemplo1).
+
+### Versión 1: Usando una Imagen Base
+
+El contexto del proyecto incluye un `Dockerfile` y un directorio `public_html` con la página web:
+
+````bash
+$ ls
+Dockerfile  public_html
+````
+
+<img src="./img/ej521.png" width="680">
+
+El `Dockerfile` se basa en una imagen mínima de Debian e instala Apache2:
+
+````Dockerfile
+# syntax=docker/dockerfile:1
+FROM debian:stable-slim
+RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
+WORKDIR /var/www/html/
+COPY public_html .
+EXPOSE 80
+CMD apache2ctl -D FOREGROUND
+````
+
+Construimos la imagen y verificamos su creación:
+
+````bash
+docker build -t usuario/ejemplo1:v1 .
+docker images
+````
+
+<img src="./img/ej522.png" width="680">
+
+---
+
+<img src="./img/ej523.png" width="680">
+
+Ejecutamos el contenedor:
+
+````bash
+docker run -d -p 80:80 --name ejemplo1 usuario/ejemplo1:v1
+````
+
+Ahora podemos acceder a la página web desde el navegador.
+
+<img src="./img/ej524.png" width="680">
+
+### Versión 2: Usando una Imagen con Apache2
+
+En esta versión, usamos una imagen que ya incluye Apache2, simplificando el `Dockerfile`:
+
+````Dockerfile
+# syntax=docker/dockerfile:1
+FROM httpd:2.4
+COPY public_html /usr/local/apache2/htdocs/
+EXPOSE 80
+````
+
+Construcción y ejecución:
+
+````bash
+docker build -t usuario/ejemplo1:v2 .
+docker run -d -p 80:80 --name ejemplo1 usuario/ejemplo1:v2
+````
+
+## Versión 3: Usando una Imagen con Nginx
+
+Para esta versión, usamos la imagen oficial de Nginx:
+
+````Dockerfile
+# syntax=docker/dockerfile:1
+FROM nginx:1.24
+COPY public_html /usr/share/nginx/html
+EXPOSE 80
+````
+
+Construcción y ejecución:
+
+````bash
+docker build -t usuario/ejemplo1:v3 .
+docker run -d -p 80:80 --name ejemplo1 usuario/ejemplo1:v3
+````
+
+
+
+### Ejemplo 3
+
+### Construcción de Imágenes con una Aplicación Python
+
+En este ejemplo, crearemos una imagen Docker para desplegar una aplicación web en Python con Flask. La aplicación se ejecutará en el puerto `3000/tcp`.
+
+Puedes encontrar los archivos necesarios en este [directorio](https://github.com/josedom24/curso_docker_ies/tree/main/ejemplos/modulo5/ejemplo3) del repositorio.
+
+### Estructura del Proyecto
+El contexto del proyecto incluye:
+- Un fichero `Dockerfile`
+- Un directorio `app` que contiene la aplicación Python
+
+### Creación de la Imagen desde Debian
+Vamos a utilizar una imagen base de Debian sin servicios preinstalados. El `Dockerfile` correspondiente es:
+
+```Dockerfile
+# syntax=docker/dockerfile:1
+FROM debian:12
+RUN apt-get update && apt-get install -y python3-pip && apt-get clean && rm -rf /var/lib/apt/lists/*
+WORKDIR /usr/share/app
+COPY app .
+RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
+EXPOSE 3000
+CMD python3 app.py
+```
+
+### Explicación:
+- Se instala `pip` para gestionar las dependencias de Python.
+- Se copia la aplicación en la imagen.
+- Se establece `/usr/share/app` como directorio de trabajo.
+- Se instalan las dependencias listadas en `requirements.txt`.
+- Se define `CMD` para iniciar el servidor web con `python3 app.py`.
+
+Para construir la imagen:
+```bash
+$ docker build -t usuario/ejemplo3:v1 .
+```
+
+<img src="./img/ej531.png" width="680">
+
+Para verificar la imagen creada:
+```bash
+$ docker images
+```
+
+<img src="./img/ej532.png" width="680">
+
+
+Para ejecutar el contenedor:
+```bash
+$ docker run -d -p 80:3000 --name ejemplo3 usuario/ejemplo3:v1
+```
+
+Ahora puedes acceder a la aplicación en `http://localhost`.
+
+<img src="./img/ej533.png" width="680">
+
+### Versión Alternativa: Desde una Imagen con Python Preinstalado
+En lugar de instalar Python manualmente, podemos usar una imagen que ya lo incluya:
+
+```Dockerfile
+# syntax=docker/dockerfile:1
+FROM python:3.12.1-bookworm
+WORKDIR /usr/share/app
+COPY app .
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 3000
+CMD python app.py
+```
+
+### Diferencias:
+- Se usa una imagen base con Python preinstalado (`python:3.12.1-bookworm`).
+- No es necesario instalar `pip`, ya que viene incluido en la imagen.
+
+Para construir esta versión:
+```bash
+$ docker build -t usuario/ejemplo3:v2 .
+```
+
+Para ejecutar:
+```bash
+$ docker run -d -p 80:3000 --name ejemplo3 usuario/ejemplo3:v2
+```
+
+Ahora la aplicación estará disponible en `http://localhost`.
+
+---
+
+
