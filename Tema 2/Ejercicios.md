@@ -193,67 +193,83 @@ Sí, en la mayoría de caso se desea una alta disponibilidad, por ello un mismo 
 
 El <em>DNS resolver local</em> es quien se encargará de decidir a cuál de las direcciones IP se envía una petición. El DNS resolver procesará la solicitud y se encargará de dar la dirección IP correcta.
 
+---
+
 ## Servidor Caché y Forwarding - Bind9
 
-Mantenemos actualizados los paquetes de Ubuntu con los siguientes comandos:
+En esta guía, aprenderás a crear una imagen Docker personalizada a partir de un contenedor en ejecución. Esto permite modificar una imagen base y guardarla con los cambios aplicados.
 
-````
-sudo apt update
-sudo apt upgrade -y
-````
+#### 1. Actualizar el Sistema
 
-Instalamos BIND:
-````
-sudo apt install bind9 bind9utils bind9-doc -y
-````
+Antes de empezar, asegúrate de que tu sistema está actualizado.
 
-Para el caché del DNS solo debemos de modificar este archivo
-
-```
-sudo nano /etc/bindnamed.conf.options
+```bash
+sudo apt update && sudo apt upgrade -y
 ```
 
-Una vez abierto el archivo quitamos todo los comentarios, y nos debrá quear una cosa así.
+#### 2. Iniciar un Contenedor desde una Imagen Base
 
-````
-options {
-      directory "/var/cache/bind";
+Ejecutamos un contenedor interactivo basado en Debian.
 
-      dnssec-validation auto;
+```bash
+docker run -it --name mi_contenedor debian bash
+```
 
-      auth-nxdomain no;    # conform to RFC1035
-      listen-on-v6 { any; };
+#### 3. Instalar y Configurar Software
 
-      recursion yes;
-      allow-query { goodclients; };
+Dentro del contenedor, realizamos las modificaciones necesarias, como instalar paquetes o cambiar configuraciones.
 
-      forwarders {
-                8.8.8.8;
-                8.8.4.4;
-      };
-      forward only;
+```bash
+apt update && apt install -y apache2
+```
 
-      dnssec-enable yes;
-      dnssec-validation yes;
-};
-````
-````
-acl goodclients {
-    192.0.2.0/24;
-    localhost;
-    localnets;
-};
-````
+Creamos un archivo de prueba en el servidor web.
 
+```bash
+echo "<h1>Servidor Apache en Docker</h1>" > /var/www/html/index.html
+```
 
-imagen
+Salimos del contenedor.
 
-Reiniciamos el servicio de Bind
+```bash
+exit
+```
 
-````
-sudo systemctl restart bind9
-````
+#### 4. Crear una Imagen a partir del Contenedor Modificado
 
-En la máquina cliente ponemos de DNS la ip del equipo con el servicio bind9 y realizamos una consulta:
+Usamos `docker commit` para generar una nueva imagen con los cambios aplicados.
 
-imagen
+```bash
+docker commit mi_contenedor usuario/miapache:v1
+```
+
+Verificamos que la imagen ha sido creada correctamente.
+
+```bash
+docker images
+```
+
+#### 5. Ejecutar un Contenedor desde la Nueva Imagen
+
+Para probar la nueva imagen, iniciamos un contenedor y exponemos el puerto 80.
+
+```bash
+docker run -d -p 8080:80 --name servidor_web usuario/miapache:v1 bash -c "apache2ctl -D FOREGROUND"
+```
+
+Ahora puedes acceder a `http://localhost:8080` y ver la página que configuraste.
+
+#### 6. Limpiar Recursos (Opcional)
+
+Si deseas eliminar los contenedores e imágenes creados, usa los siguientes comandos:
+
+```bash
+docker stop servidor_web
+
+docker rm servidor_web mi_contenedor
+
+docker rmi usuario/miapache:v1
+```
+
+---
+
