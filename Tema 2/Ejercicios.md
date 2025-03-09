@@ -195,81 +195,149 @@ El <em>DNS resolver local</em> es quien se encargará de decidir a cuál de las 
 
 ---
 
-## Servidor Caché y Forwarding - Bind9
+## Instalación de Bind9 como servidor DNS en modo Caché y Reenvío
 
-En esta guía, aprenderás a crear una imagen Docker personalizada a partir de un contenedor en ejecución. Esto permite modificar una imagen base y guardarla con los cambios aplicados.
+## Actualización del sistema
 
-#### 1. Actualizar el Sistema
-
-Antes de empezar, asegúrate de que tu sistema está actualizado.
+Antes de comenzar, es recomendable actualizar los paquetes disponibles en el sistema.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
-#### 2. Iniciar un Contenedor desde una Imagen Base
+![](/Tema2/img/Screenshot_1.png)
 
-Ejecutamos un contenedor interactivo basado en Debian.
-
-```bash
-docker run -it --name mi_contenedor debian bash
-```
-
-#### 3. Instalar y Configurar Software
-
-Dentro del contenedor, realizamos las modificaciones necesarias, como instalar paquetes o cambiar configuraciones.
+Luego, reiniciamos el sistema para aplicar cualquier cambio necesario.
 
 ```bash
-apt update && apt install -y apache2
+sudo reboot
 ```
 
-Creamos un archivo de prueba en el servidor web.
+![](/Tema2/img/Screenshot_2.png)
+
+## Instalación de Bind9
+
+Procedemos a instalar el servidor DNS Bind junto con sus utilidades y documentación.
 
 ```bash
-echo "<h1>Servidor Apache en Docker</h1>" > /var/www/html/index.html
+sudo apt-get install bind9 bind9utils bind9-doc -y
 ```
 
-Salimos del contenedor.
+![](/Tema2/img/Screenshot_3.png)
+
+## Configuración de Bind9
+
+Una vez instalado, editamos el archivo de configuración principal.
 
 ```bash
-exit
+sudo nano /etc/bind/named.conf.options
 ```
 
-#### 4. Crear una Imagen a partir del Contenedor Modificado
+![](/Tema2/img/Screenshot_4.png)
 
-Usamos `docker commit` para generar una nueva imagen con los cambios aplicados.
+Dentro del archivo, agregamos la siguiente configuración para definir una ACL de clientes permitidos y configurar el reenviador.
 
 ```bash
-docker commit mi_contenedor usuario/miapache:v1
+acl goodclients {
+        RED Y MÁSCARA;
+        localhost;
+        localnets;
+};
+
+options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+
+        forwarders {
+                8.8.8.8;
+                8.8.4.4;
+        };
+        forward only;
+
+        dnssec-validation yes;
+        auth-nxdomain no;
+        listen-on-v6 { any; };
+};
 ```
 
-Verificamos que la imagen ha sido creada correctamente.
+![](/Tema2/img/Screenshot_5.png)
+![](/Tema2/img/Screenshot_6.png)
+
+## Verificación de configuración
+
+Ejecutamos el siguiente comando para comprobar que no hay errores en la configuración.
 
 ```bash
-docker images
+sudo named-checkconf
 ```
 
-#### 5. Ejecutar un Contenedor desde la Nueva Imagen
+![](/Tema2/img/Screenshot_7.png)
 
-Para probar la nueva imagen, iniciamos un contenedor y exponemos el puerto 80.
+Si no hay mensajes de error, reiniciamos el servicio.
 
 ```bash
-docker run -d -p 8080:80 --name servidor_web usuario/miapache:v1 bash -c "apache2ctl -D FOREGROUND"
+sudo systemctl restart bind9
 ```
 
-Ahora puedes acceder a `http://localhost:8080` y ver la página que configuraste.
+![](/Tema2/img/Screenshot_8.png)
 
-#### 6. Limpiar Recursos (Opcional)
+## Configuración del cortafuegos
 
-Si deseas eliminar los contenedores e imágenes creados, usa los siguientes comandos:
+Permitimos el tráfico necesario para Bind9 a través del firewall.
 
 ```bash
-docker stop servidor_web
-
-docker rm servidor_web mi_contenedor
-
-docker rmi usuario/miapache:v1
+sudo ufw allow Bind9
 ```
 
----
+![](/Tema2/img/Screenshot_9.png)
 
+## Monitoreo del servicio
+
+Podemos visualizar los registros del servicio en tiempo real con:
+
+```bash
+sudo journalctl -u bind9 -f
+```
+
+![](/Tema2/img/Screenshot_10.png)
+
+## Configuración del cliente DNS
+
+Modificamos el archivo de configuración de DNS del servidor para que utilice su propia dirección IP.
+
+```bash
+sudo nano /etc/resolv.conf
+```
+
+![](/Tema2/img/Screenshot_11.png)
+
+Dentro del archivo, agregamos la dirección IP del servidor DNS.
+
+```bash
+nameserver DIRECCIÓN_IP
+```
+
+![](/Tema2/img/Screenshot_12.png)
+
+Para comprobar que el servidor está resolviendo correctamente, hacemos una prueba de ping a un dominio.
+
+```bash
+ping -c 1 google.com
+```
+
+![](/Tema2/img/Screenshot_13.png)
+
+Ahora, configuramos otro equipo en la misma red para que utilice este servidor DNS y verificamos que también funcione.
+
+![](/Tema2/img/Screenshot_14.png)
+
+Ejecutamos la misma prueba en el cliente.
+
+```bash
+ping google.com
+```
+
+![](/Tema2/img/Screenshot_15.png)
+
+Si la respuesta es satisfactoria, nuestro servidor DNS está funcionando correctamente en modo caché y reenvío.
